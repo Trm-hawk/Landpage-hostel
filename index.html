@@ -172,7 +172,8 @@
                              <input type="tel" id="phone" name="Telefone" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                          </div>
                      </div>
-                     <button type="submit" id="send-booking-request" class="mt-8 w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
+                     <p id="submission-error" class="text-red-500 text-sm mt-4 text-center"></p>
+                     <button type="submit" id="send-booking-request" class="mt-4 w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
                          Enviar Solicitação de Reserva
                      </button>
                  </form>
@@ -303,6 +304,7 @@
         const bookingForm = document.getElementById('booking-form');
         const registrationStepDiv = document.getElementById('registration-step');
         const confirmationMessageDiv = document.getElementById('confirmation-message');
+        const submissionErrorP = document.getElementById('submission-error');
 
         function goToRegistrationStep() {
              if(totalNightsSpan.textContent === '0' || dateErrorP.textContent !== '') {
@@ -325,6 +327,7 @@
             checkoutInput.removeAttribute('min');
             calculationResultDiv.classList.add('hidden');
             dateErrorP.textContent = '';
+            submissionErrorP.textContent = '';
             bookingForm.reset();
             modalTitle.textContent = "Calcular e Reservar";
             registrationStepDiv.classList.add('hidden');
@@ -348,6 +351,7 @@
 
             submitButton.disabled = true;
             submitButton.textContent = 'Enviando...';
+            submissionErrorP.textContent = '';
 
             fetch(action, {
                 method: 'POST',
@@ -358,7 +362,7 @@
             }).then(response => {
                 if (response.ok) {
                     registrationStepDiv.classList.add('hidden');
-                    confirmationMessageDiv.textContent = 'Enviado com sucesso! Reserva feita, aguarde o retorno de nossa equipe.';
+                    confirmationMessageDiv.innerHTML = '<p class="font-semibold">Enviado com sucesso!</p><p>Reserva feita, aguarde o retorno de nossa equipe.</p>';
                     confirmationMessageDiv.classList.remove('hidden');
 
                     const checkin = document.getElementById('form-checkin').value;
@@ -367,22 +371,22 @@
                     const whatsappUrl = `https://wa.me/5511940696636?text=${text}`;
 
                     setTimeout(() => {
-                        window.location.href = whatsappUrl;
+                        window.open(whatsappUrl, '_blank');
                         hideModal(); // Also close the modal after redirect
                     }, 3000);
                 } else {
                     response.json().then(data => {
                         if (Object.hasOwn(data, 'errors')) {
-                           alert(data["errors"].map(error => error["message"]).join(", "));
+                           submissionErrorP.textContent = data["errors"].map(error => error["message"]).join(", ");
                         } else {
-                           alert("Oops! Ocorreu um problema ao enviar seu formulário.");
+                           submissionErrorP.textContent = "Oops! Ocorreu um problema ao enviar seu formulário.";
                         }
                         submitButton.disabled = false;
                         submitButton.textContent = 'Enviar Solicitação de Reserva';
                     })
                 }
             }).catch(error => {
-                alert("Oops! Ocorreu um problema ao enviar seu formulário.");
+                submissionErrorP.textContent = "Oops! Ocorreu um problema de conexão. Tente novamente.";
                 submitButton.disabled = false;
                 submitButton.textContent = 'Enviar Solicitação de Reserva';
             });
