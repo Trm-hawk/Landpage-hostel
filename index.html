@@ -95,7 +95,7 @@
         </div>
     </section>
 
-    <!-- Other sections (Location, Attractions) remain the same -->
+    <!-- Other sections (Location, Attractions) have been removed for brevity but are unchanged -->
     <section id="location" class="py-20 bg-gray-50">...</section>
     <section id="attractions" class="py-20 bg-white">...</section>
 
@@ -150,17 +150,18 @@
             <!-- Step 2: Registration Form -->
             <div id="registration-step" class="hidden">
                  <p class="text-center text-gray-600 mb-4">Ótimo! Agora preencha seus dados para concluir a solicitação da reserva.</p>
-                 <form id="booking-form" action="mailto:luanmax.contato11@gmail.com" method="post" enctype="text/plain">
+                 <!-- IMPORTANT: Replace the action URL with your own Formspree endpoint -->
+                 <form id="booking-form" action="https://formspree.io/f/mvojevqk" method="POST">
                      <!-- Hidden fields to carry over booking data -->
                      <input type="hidden" id="form-checkin" name="Check-in">
                      <input type="hidden" id="form-checkout" name="Check-out">
-                     <input type="hidden" id="form-total-nights" name="Total_de_Diarias">
-                     <input type="hidden" id="form-total-price" name="Valor_Total">
+                     <input type="hidden" id="form-total-nights" name="Total de Diárias">
+                     <input type="hidden" id="form-total-price" name="Valor Total">
                      
                      <div class="space-y-4">
                          <div>
                              <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-                             <input type="text" id="full-name" name="Nome_Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                             <input type="text" id="full-name" name="Nome Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                          </div>
                          <div>
                              <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -177,7 +178,7 @@
                  </form>
             </div>
              <div id="confirmation-message" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
-                Seu cliente de email será aberto para enviar a solicitação. Obrigado!
+                <!-- Success message will be inserted here by JS -->
             </div>
         </div>
     </div>
@@ -196,8 +197,8 @@
                     <h3 class="text-xl font-bold mb-4">Contato</h3>
                     <p class="text-gray-400">Av. Bosque da Saúde, 236</p>
                     <p class="text-gray-400">Saúde, São Paulo - SP</p>
-                    <p class="text-gray-400 mt-2"><strong>Whatsapp:</strong> (11) 9 XXXX-XXXX</p>
-                    <p class="text-gray-400"><strong>Email:</strong> contato@sphostel.com</p>
+                    <p class="text-gray-400 mt-2"><strong>Whatsapp:</strong> +55 11 94069-6636</p>
+                    <p class="text-gray-400"><strong>Email:</strong> luanmax.contato11@gmail.com</p>
                 </div>
                 <div>
                     <h3 class="text-xl font-bold mb-4">Siga-nos</h3>
@@ -300,6 +301,7 @@
         // --- Form Submission Logic ---
         const confirmButton = document.getElementById('confirm-booking-button');
         const bookingForm = document.getElementById('booking-form');
+        const registrationStepDiv = document.getElementById('registration-step');
         const confirmationMessageDiv = document.getElementById('confirmation-message');
 
         function goToRegistrationStep() {
@@ -308,47 +310,83 @@
                  calculationResultDiv.classList.remove('hidden');
                  return;
              }
-             // Populate hidden form fields
              document.getElementById('form-checkin').value = checkinInput.value;
              document.getElementById('form-checkout').value = checkoutInput.value;
              document.getElementById('form-total-nights').value = totalNightsSpan.textContent;
              document.getElementById('form-total-price').value = totalPriceSpan.textContent;
-
-             // Switch views
              modalTitle.textContent = "Dados para Reserva";
              dateSelectionStep.classList.add('hidden');
-             registrationStep.classList.remove('hidden');
+             registrationStepDiv.classList.remove('hidden');
         }
 
         function resetForm() {
-            // Reset dates
             checkinInput.value = '';
             checkoutInput.value = '';
             checkoutInput.removeAttribute('min');
             calculationResultDiv.classList.add('hidden');
             dateErrorP.textContent = '';
-
-            // Reset registration form
             bookingForm.reset();
-            
-            // Reset view to step 1
             modalTitle.textContent = "Calcular e Reservar";
-            registrationStep.classList.add('hidden');
+            registrationStepDiv.classList.add('hidden');
             dateSelectionStep.classList.remove('hidden');
             confirmationMessageDiv.classList.add('hidden');
+            const submitButton = document.getElementById('send-booking-request');
+            submitButton.disabled = false;
+            submitButton.textContent = 'Enviar Solicitação de Reserva';
         }
 
         checkinInput.addEventListener('change', calculatePrice);
         checkoutInput.addEventListener('change', calculatePrice);
         confirmButton.addEventListener('click', goToRegistrationStep);
 
-        bookingForm.addEventListener('submit', (e) => {
-            // This will trigger the mailto: link
-            confirmationMessageDiv.classList.remove('hidden');
-            // Hide modal after user sends email (or cancels)
-            setTimeout(hideModal, 4000);
-        });
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const action = form.action;
+            const submitButton = document.getElementById('send-booking-request');
 
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+
+            fetch(action, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    registrationStepDiv.classList.add('hidden');
+                    confirmationMessageDiv.textContent = 'Enviado com sucesso! Reserva feita, aguarde o retorno de nossa equipe.';
+                    confirmationMessageDiv.classList.remove('hidden');
+
+                    const checkin = document.getElementById('form-checkin').value;
+                    const checkout = document.getElementById('form-checkout').value;
+                    const text = encodeURIComponent(`Olá! Acabei de fazer uma solicitação de reserva.\n\nCheck-in: ${checkin}\nCheck-out: ${checkout}\n\nAguardo o retorno.`);
+                    const whatsappUrl = `https://wa.me/5511940696636?text=${text}`;
+
+                    setTimeout(() => {
+                        window.location.href = whatsappUrl;
+                        hideModal(); // Also close the modal after redirect
+                    }, 3000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                           alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                           alert("Oops! Ocorreu um problema ao enviar seu formulário.");
+                        }
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Enviar Solicitação de Reserva';
+                    })
+                }
+            }).catch(error => {
+                alert("Oops! Ocorreu um problema ao enviar seu formulário.");
+                submitButton.disabled = false;
+                submitButton.textContent = 'Enviar Solicitação de Reserva';
+            });
+        });
     </script>
 </body>
 </html>
