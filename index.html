@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Bosque da Saúde - Sua Casa em São Paulo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1518655048521-f130df041f66?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+            background-size: cover;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-teal-600">Hostel Bosque</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#location" class="text-gray-600 hover:text-teal-500">Localização</a>
+                <a href="#attractions" class="text-gray-600 hover:text-teal-500">Atrações</a>
+                <a href="#pricing" class="text-gray-600 hover:text-teal-500">Preços</a>
+                <a href="#contact" class="text-gray-600 hover:text-teal-500">Contato</a>
+            </div>
+            <a href="#pricing" class="cta-button bg-teal-500 text-white font-bold py-2 px-6 rounded-full hover:bg-teal-600">
+                Reservar Agora
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white h-[60vh] md:h-[80vh] flex items-center justify-center">
+        <div class="text-center max-w-3xl px-4">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider leading-tight">Explore São Paulo sem Complicação</h1>
+            <p class="mt-4 text-lg md:text-xl font-light">Hospede-se em uma localização estratégica, a passos do metrô, e conecte-se com o melhor que a cidade tem a oferecer. Conforto e economia andam juntos aqui.</p>
+            <a href="#pricing" class="cta-button mt-8 inline-block bg-amber-400 text-gray-900 font-bold py-4 px-10 rounded-full hover:bg-amber-500 text-lg">
+                Ver Preços e Reservar
+            </a>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="bg-teal-100 p-4 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Localização Estratégica</h3>
+                    <p class="text-gray-600">Na Av. Bosque da Saúde, um bairro tranquilo e arborizado com acesso rápido aos principais pontos da cidade.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-teal-100 p-4 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">A Passos do Metrô</h3>
+                    <p class="text-gray-600">A poucos minutos da estação Praça da Árvore (Linha 1-Azul), sua porta de entrada para toda São Paulo.</p>
+                </div>
+                 <div class="flex flex-col items-center">
+                    <div class="bg-teal-100 p-4 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path><path d="M8 16h.01"></path><path d="M8 20h.01"></path><path d="M12 18h.01"></path><path d="M12 22h.01"></path><path d="M16 16h.01"></path><path d="M16 20h.01"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Conexão Total</h3>
+                    <p class="text-gray-600">Além do metrô, diversas linhas de ônibus passam em frente, garantindo mobilidade máxima dia e noite.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-teal-100 p-4 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-teal-600"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Preço Imbatível</h3>
+                    <p class="text-gray-600">A melhor relação custo-benefício para você aproveitar a cidade ao máximo sem pesar no bolso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">O Ponto de Partida Perfeito</h2>
+                <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Av. Bosque da Saúde, 236 - Saúde, São Paulo - SP</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-teal-700">Conectividade é tudo.</h3>
+                    <p class="mb-6 text-gray-700">Estar na Linha 1-Azul do metrô significa ter acesso direto e rápido aos lugares mais importantes de São Paulo. Deixe o carro de lado e esqueça o trânsito. Daqui, a cidade é sua.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-teal-500 font-bold mr-3">✔</span>
+                            <div><strong class="font-semibold">Avenida Paulista:</strong> ~15 minutos de metrô. O coração cultural e financeiro da cidade.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-500 font-bold mr-3">✔</span>
+                            <div><strong class="font-semibold">Centro Histórico (Sé, Luz):</strong> ~20 minutos de metrô. Mergulhe na história de SP.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-teal-500 font-bold mr-3">✔</span>
+                            <div><strong class="font-semibold">Bairro da Liberdade:</strong> ~15 minutos de metrô. A maior comunidade japonesa fora do Japão.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-500 font-bold mr-3">✔</span>
+                            <div><strong class="font-semibold">Parque Ibirapuera:</strong> Fácil acesso via ônibus ou uma curta viagem de app.</div>
+                        </li>
+                         <li class="flex items-start">
+                            <span class="text-teal-500 font-bold mr-3">✔</span>
+                             <div><strong class="font-semibold">Rodoviária Jabaquara:</strong> Acesso direto ao litoral paulista.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="rounded-lg shadow-xl overflow-hidden">
+                    <!-- Imagem estática do mapa. Em um projeto real, poderia ser um Google Maps interativo -->
+                    <img src="https://placehold.co/600x450/e2e8f0/334155?text=IMAGEM+DO+MAPA%0AHostel+e+Metrô+destacados" alt="[Imagem do mapa mostrando a localização do Hostel Bosque da Saúde próximo ao metrô Praça da Árvore]" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Seu Roteiro Começa Aqui</h2>
+                <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Com a nossa localização, você gasta menos tempo no transporte e mais tempo vivendo a cidade.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Attraction Card 1 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <img src="https://images.unsplash.com/photo-1579781430040-23501a5b4f8d?q=80&w=1974&auto=format&fit=crop" alt="[Imagem da Avenida Paulista]" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <h4 class="absolute bottom-4 left-4 text-white text-xl font-bold">Avenida Paulista</h4>
+                </div>
+                <!-- Attraction Card 2 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <img src="https://images.unsplash.com/photo-1589923143526-59a6d79a29a8?q=80&w=1964&auto=format&fit=crop" alt="[Imagem do Parque Ibirapuera]" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <h4 class="absolute bottom-4 left-4 text-white text-xl font-bold">Parque Ibirapuera</h4>
+                </div>
+                <!-- Attraction Card 3 -->
+                <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <img src="https://images.unsplash.com/photo-1543793613-434858a1736b?q=80&w=1964&auto=format&fit=crop" alt="[Imagem do Mercado Municipal de São Paulo]" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <h4 class="absolute bottom-4 left-4 text-white text-xl font-bold">Mercado Municipal</h4>
+                </div>
+                <!-- Attraction Card 4 -->
+                 <div class="relative rounded-lg overflow-hidden shadow-lg group">
+                    <img src="https://images.unsplash.com/photo-1588494136780-b48bad6044a8?q=80&w=1935&auto=format&fit=crop" alt="[Imagem da Catedral da Sé no centro histórico]" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <h4 class="absolute bottom-4 left-4 text-white text-xl font-bold">Centro Histórico</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold">Reserve Sua Vaga com Preço Justo</h2>
+                <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Escolha o melhor plano para sua viagem. Check-in a partir das 13h, check-out até 12h do dia seguinte.</p>
+            </div>
+            <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-4xl mx-auto">
+                <!-- Weekday Price -->
+                <div class="bg-white border-2 border-teal-500 rounded-xl shadow-lg p-8 flex flex-col w-full text-center transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-teal-600">Dias de Semana</h3>
+                    <p class="text-gray-500">(Segunda a Quinta)</p>
+                    <div class="my-6">
+                        <span class="text-5xl font-black">R$ 35</span>
+                        <span class="text-xl font-bold text-gray-600">,00</span>
+                        <span class="text-gray-500">/ diária</span>
+                    </div>
+                    <ul class="text-left space-y-2 mb-8">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Wi-Fi de alta velocidade</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Armários individuais</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cozinha compartilhada</li>
+                    </ul>
+                    <a href="#contact" class="cta-button mt-auto w-full bg-teal-500 text-white font-bold py-3 px-6 rounded-full hover:bg-teal-600">
+                        Reservar Semana
+                    </a>
+                </div>
+                <!-- Weekend Price -->
+                <div class="bg-white border rounded-xl shadow-lg p-8 flex flex-col w-full text-center transform hover:scale-105 transition-transform duration-300">
+                    <h3 class="text-2xl font-bold text-gray-800">Finais de Semana</h3>
+                    <p class="text-gray-500">(Sexta a Domingo)</p>
+                    <div class="my-6">
+                        <span class="text-5xl font-black">R$ 43</span>
+                         <span class="text-xl font-bold text-gray-600">,00</span>
+                        <span class="text-gray-500">/ diária</span>
+                    </div>
+                     <ul class="text-left space-y-2 mb-8">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Wi-Fi de alta velocidade</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Armários individuais</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Cozinha compartilhada</li>
+                    </ul>
+                    <a href="#contact" class="cta-button mt-auto w-full bg-gray-800 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-900">
+                        Reservar Fim de Semana
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Hostel Bosque</h3>
+                    <p class="text-gray-400">Sua melhor opção de hospedagem econômica e inteligente em São Paulo.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contato</h3>
+                    <p class="text-gray-400">Av. Bosque da Saúde, 236</p>
+                    <p class="text-gray-400">Saúde, São Paulo - SP</p>
+                    <p class="text-gray-400 mt-2"><strong>Whatsapp:</strong> (11) 9 XXXX-XXXX</p>
+                    <p class="text-gray-400"><strong>Email:</strong> contato@hostelbosque.com</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Siga-nos</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.27.058 1.688.072 4.948.072s3.68-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.358-2.617-6.78-6.979-6.98C15.688.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.214 3.791 4.649-.69.188-1.452.23-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.588-7.52 2.588-.49 0-.974-.028-1.455-.086 2.679 1.726 5.862 2.742 9.283 2.742 11.122 0 17.22-9.22 17.22-17.22 0-.262-.006-.522-.018-.781A12.309 12.309 0 0024 4.557z"></path></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500">
+                <p>&copy; 2024 Hostel Bosque. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
