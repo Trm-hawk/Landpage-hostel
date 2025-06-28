@@ -42,17 +42,41 @@
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-teal-600">SP Hostel</a>
-            <div class="hidden md:flex space-x-6 items-center">
-                <a href="#location" class="text-gray-600 hover:text-teal-500">Localização</a>
-                <a href="#attractions" class="text-gray-600 hover:text-teal-500">Atrações</a>
-                <a href="#pricing" class="text-gray-600 hover:text-teal-500">Reservar</a>
-                <a href="#contact" class="text-gray-600 hover:text-teal-500">Contato</a>
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-teal-600">SP Hostel</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#location" class="text-gray-600 hover:text-teal-500">Localização</a>
+                    <a href="#attractions" class="text-gray-600 hover:text-teal-500">Atrações</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-teal-500">Reservar</a>
+                    <a href="#contact" class="text-gray-600 hover:text-teal-500">Contato</a>
+                    <button id="open-reserve-modal-header" class="cta-button bg-teal-500 text-white font-bold py-2 px-6 rounded-full hover:bg-teal-600">
+                        Reservar Agora
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-teal-500 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <button id="open-reserve-modal-header" class="cta-button bg-teal-500 text-white font-bold py-2 px-6 rounded-full hover:bg-teal-600">
-                Reservar Agora
-            </button>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <a href="#location" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Localização</a>
+                <a href="#attractions" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Atrações</a>
+                <a href="#pricing" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Reservar</a>
+                <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Contato</a>
+                <button id="open-reserve-modal-mobile" class="mt-2 w-full cta-button bg-teal-500 text-white font-bold py-2 px-6 rounded-full hover:bg-teal-600">
+                    Reservar Agora
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -150,14 +174,7 @@
             <!-- Step 2: Registration Form -->
             <div id="registration-step" class="hidden">
                  <p class="text-center text-gray-600 mb-4">Ótimo! Agora preencha seus dados para concluir a solicitação da reserva.</p>
-                 <!-- IMPORTANT: Replace the action URL with your own Formspree endpoint -->
-                 <form id="booking-form" action="https://formspree.io/f/mvojevqk" method="POST">
-                     <!-- Hidden fields to carry over booking data -->
-                     <input type="hidden" id="form-checkin" name="Check-in">
-                     <input type="hidden" id="form-checkout" name="Check-out">
-                     <input type="hidden" id="form-total-nights" name="Total de Diárias">
-                     <input type="hidden" id="form-total-price" name="Valor Total">
-                     
+                 <form id="booking-form">
                      <div class="space-y-4">
                          <div>
                              <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
@@ -172,14 +189,13 @@
                              <input type="tel" id="phone" name="Telefone" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                          </div>
                      </div>
-                     <p id="submission-error" class="text-red-500 text-sm mt-4 text-center"></p>
-                     <button type="submit" id="send-booking-request" class="mt-4 w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
-                         Enviar Solicitação de Reserva
+                     <button type="submit" id="send-booking-request" class="mt-8 w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
+                         Enviar via WhatsApp
                      </button>
                  </form>
             </div>
              <div id="confirmation-message" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
-                <!-- Success message will be inserted here by JS -->
+                <!-- Message will be inserted here by JS -->
             </div>
         </div>
     </div>
@@ -216,6 +232,15 @@
     </footer>
 
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
         // --- Modal Control and State ---
         const modal = document.getElementById('reservation-modal');
         const modalTitle = document.getElementById('modal-title');
@@ -237,7 +262,7 @@
                 resetForm(); // Reset form completely on close
             }, 250);
         };
-
+        
         openModalButtons.forEach(button => button.addEventListener('click', showModal));
         closeModalButton.addEventListener('click', hideModal);
         modal.addEventListener('click', (event) => {
@@ -304,7 +329,6 @@
         const bookingForm = document.getElementById('booking-form');
         const registrationStepDiv = document.getElementById('registration-step');
         const confirmationMessageDiv = document.getElementById('confirmation-message');
-        const submissionErrorP = document.getElementById('submission-error');
 
         function goToRegistrationStep() {
              if(totalNightsSpan.textContent === '0' || dateErrorP.textContent !== '') {
@@ -312,10 +336,6 @@
                  calculationResultDiv.classList.remove('hidden');
                  return;
              }
-             document.getElementById('form-checkin').value = checkinInput.value;
-             document.getElementById('form-checkout').value = checkoutInput.value;
-             document.getElementById('form-total-nights').value = totalNightsSpan.textContent;
-             document.getElementById('form-total-price').value = totalPriceSpan.textContent;
              modalTitle.textContent = "Dados para Reserva";
              dateSelectionStep.classList.add('hidden');
              registrationStepDiv.classList.remove('hidden');
@@ -327,15 +347,11 @@
             checkoutInput.removeAttribute('min');
             calculationResultDiv.classList.add('hidden');
             dateErrorP.textContent = '';
-            submissionErrorP.textContent = '';
             bookingForm.reset();
             modalTitle.textContent = "Calcular e Reservar";
             registrationStepDiv.classList.add('hidden');
             dateSelectionStep.classList.remove('hidden');
             confirmationMessageDiv.classList.add('hidden');
-            const submitButton = document.getElementById('send-booking-request');
-            submitButton.disabled = false;
-            submitButton.textContent = 'Enviar Solicitação de Reserva';
         }
 
         checkinInput.addEventListener('change', calculatePrice);
@@ -344,53 +360,32 @@
 
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const form = e.target;
-            const data = new FormData(form);
-            const action = form.action;
-            const submitButton = document.getElementById('send-booking-request');
 
-            submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
-            submissionErrorP.textContent = '';
+            // Get all data
+            const checkin = checkinInput.value;
+            const checkout = checkoutInput.value;
+            const totalNights = totalNightsSpan.textContent;
+            const totalPrice = totalPriceSpan.textContent;
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
 
-            fetch(action, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    registrationStepDiv.classList.add('hidden');
-                    confirmationMessageDiv.innerHTML = '<p class="font-semibold">Enviado com sucesso!</p><p>Reserva feita, aguarde o retorno de nossa equipe.</p>';
-                    confirmationMessageDiv.classList.remove('hidden');
+            // Construct the WhatsApp message
+            const message = `Olá! Gostaria de solicitar uma reserva no SP Hostel.\n\n*Detalhes da Reserva:*\n---------------------\n*Check-in:* ${checkin}\n*Check-out:* ${checkout}\n*Total de Noites:* ${totalNights}\n*Valor Total:* ${totalPrice}\n\n*Meus Dados:*\n-----------------\n*Nome:* ${fullName}\n*Email:* ${email}\n*Telefone:* ${phone}\n\nAguardo a confirmação. Obrigado!`;
+            
+            const whatsappUrl = `https://wa.me/5511940696636?text=${encodeURIComponent(message)}`;
 
-                    const checkin = document.getElementById('form-checkin').value;
-                    const checkout = document.getElementById('form-checkout').value;
-                    const text = encodeURIComponent(`Olá! Acabei de fazer uma solicitação de reserva.\n\nCheck-in: ${checkin}\nCheck-out: ${checkout}\n\nAguardo o retorno.`);
-                    const whatsappUrl = `https://wa.me/5511940696636?text=${text}`;
+            // Show confirmation message and redirect
+            registrationStepDiv.classList.add('hidden');
+            confirmationMessageDiv.innerHTML = '<p class="font-semibold">Tudo pronto!</p><p>Você será redirecionado para o WhatsApp para enviar sua solicitação.</p>';
+            confirmationMessageDiv.classList.remove('hidden');
 
-                    setTimeout(() => {
-                        window.open(whatsappUrl, '_blank');
-                        hideModal(); // Also close the modal after redirect
-                    }, 3000);
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                           submissionErrorP.textContent = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                           submissionErrorP.textContent = "Oops! Ocorreu um problema ao enviar seu formulário.";
-                        }
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Enviar Solicitação de Reserva';
-                    })
-                }
-            }).catch(error => {
-                submissionErrorP.textContent = "Oops! Ocorreu um problema de conexão. Tente novamente.";
-                submitButton.disabled = false;
-                submitButton.textContent = 'Enviar Solicitação de Reserva';
-            });
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                hideModal();
+            }, 2500);
         });
+    });
     </script>
 </body>
 </html>
