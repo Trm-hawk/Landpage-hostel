@@ -73,6 +73,24 @@
         .swiper-pagination-bullet-active {
             background-color: #f59e0b !important;
         }
+
+        /* Styles for 600x600 Carousel Frame */
+        .swiper-square-frame {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            aspect-ratio: 1 / 1; /* Enforces a square shape */
+            margin: auto;
+            overflow: hidden; /* Ensures the spacing doesn't cause layout shifts */
+            border-radius: 0.5rem; /* Matches image radius */
+        }
+
+        .swiper-square-frame .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the square area without distortion */
+        }
+
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -195,20 +213,20 @@
                 <h2 class="text-3xl md:text-4xl font-bold">Nosso Espaço, Sua Casa</h2>
                 <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Um ambiente limpo, moderno e acolhedor esperando por você.</p>
             </div>
-            <!-- Swiper with updated images from GitHub -->
-            <div class="swiper-container mySwiper scroll-animate" style="transition-delay: 200ms;">
+            <!-- Swiper with updated images from GitHub and new frame class -->
+            <div class="swiper-container mySwiper swiper-square-frame scroll-animate" style="transition-delay: 200ms;">
                 <div class="swiper-wrapper">
                     <!-- GALLERY IMAGES: Imagens do hostel carregadas do GitHub com nomes numéricos -->
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="[Imagem 1 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="[Imagem 2 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="[Imagem 3 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="[Imagem 4 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="[Imagem 5 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="[Imagem 6 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="[Imagem 7 do hostel]" class="w-full h-96 object-cover rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="[Imagem 1 do hostel]" class="rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="[Imagem 2 do hostel]" class="rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="[Imagem 3 do hostel]" class="rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="[Imagem 4 do hostel]" class="rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="[Imagem 5 do hostel]" class="rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="[Imagem 6 do hostel]" class="rounded-lg"></div>
+                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="[Imagem 7 do hostel]" class="rounded-lg"></div>
                 </div>
                 <!-- Add Pagination -->
-                <div class="swiper-pagination mt-8"></div>
+                <div class="swiper-pagination"></div>
                 <!-- Add Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -399,6 +417,7 @@
         // --- Initialize Swiper Carousel ---
         const swiper = new Swiper('.mySwiper', {
             loop: true,
+            spaceBetween: 20, // Adiciona espaço entre os slides
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
