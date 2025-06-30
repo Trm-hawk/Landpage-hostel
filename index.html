@@ -22,7 +22,7 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-        }
+       }
         /* HERO IMAGE: CSS corrigido para garantir a exibição da imagem de fundo com sobreposição */
         .hero-gradient {
             position: relative; /* Necessário para o posicionamento do pseudo-elemento */
@@ -108,9 +108,18 @@
             object-fit: cover; /* Ensures the image covers the square area without distortion */
         }
 
+        /* Estilo do corpo da página com a nova imagem de fundo */
+        body {
+            background-image: url('https://raw.githubusercontent.com/Trm-hawk/imagens/main/9.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+        }
+
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
