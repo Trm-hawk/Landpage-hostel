@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SP Hostel - A sua Casa em São Paulo</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Swiper.js for Carousel -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Custom Styles -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
        }
-        /* HERO IMAGE: CSS corrigido para garantir a exibição da imagem de fundo com sobreposição */
+        /* HERO IMAGE */
         .hero-gradient {
-            position: relative; /* Necessário para o posicionamento do pseudo-elemento */
+            position: relative;
             background-image: url('https://raw.githubusercontent.com/Trm-hawk/imagens/main/8.jpg');
             background-position: center center;
             background-repeat: no-repeat;
@@ -34,16 +32,13 @@
         .hero-gradient::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
             z-index: 1;
         }
         .hero-gradient > * {
             position: relative;
-            z-index: 2; /* Garante que o conteúdo fique acima da sobreposição */
+            z-index: 2;
         }
         .cta-button {
             transition: all 0.3s ease;
@@ -96,38 +91,48 @@
             width: 100%;
             max-width: 600px;
             height: auto;
-            aspect-ratio: 1 / 1; /* Enforces a square shape */
+            aspect-ratio: 1 / 1;
             margin: auto;
-            overflow: hidden; /* Ensures the spacing doesn't cause layout shifts */
-            border-radius: 0.5rem; /* Matches image radius */
+            overflow: hidden;
+            border-radius: 0.5rem;
         }
-
         .swiper-square-frame .swiper-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image covers the square area without distortion */
+            object-fit: cover;
         }
-
-        /* Estilo do corpo da página com a nova imagem de fundo */
-        body {
+        
+        /* --- MUDANÇA AQUI --- */
+        /* Novo estilo para os Banners de Título de Seção */
+        .title-background {
             background-image: url('https://raw.githubusercontent.com/Trm-hawk/imagens/main/9.jpg');
             background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: center center;
+            background-position: center;
+            background-attachment: fixed; /* Efeito Parallax */
+            position: relative;
+            padding: 4rem 1.5rem; /* Espaçamento interno do banner */
+        }
+        .title-background::before {
+            content: '';
+            position: absolute;
+            inset: 0; /* Atalho para top, right, bottom, left: 0 */
+            background-color: rgba(0, 0, 0, 0.6); /* Sobreposição escura para legibilidade */
+            z-index: 1;
+        }
+        .title-background > * {
+            position: relative;
+            z-index: 2; /* Conteúdo acima da sobreposição */
         }
 
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-800 bg-white">
 
-    <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3">
             <div class="flex justify-between items-center">
                 <a href="#" class="text-2xl font-bold text-teal-600">SP Hostel</a>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-6 items-center">
                     <a href="#comodidades" class="text-gray-600 hover:text-teal-500">Comodidades</a>
                     <a href="#gallery" class="text-gray-600 hover:text-teal-500">Fotos</a>
@@ -138,7 +143,6 @@
                     </button>
                 </div>
 
-                <!-- Mobile Menu Button (Hamburger) -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-600 hover:text-teal-500 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +152,6 @@
                 </div>
             </div>
 
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden mt-4">
                 <a href="#comodidades" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Comodidades</a>
                 <a href="#gallery" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Fotos</a>
@@ -161,7 +164,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-gradient text-white h-[70vh] md:h-[90vh] flex items-center justify-center">
         <div class="text-center max-w-3xl px-4">
             <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider leading-tight text-shadow-lg">A sua Aventura em SP Começa Aqui</h1>
@@ -172,178 +174,174 @@
         </div>
     </section>
 
-    <!-- Amenities Section -->
-    <section id="comodidades" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold">Tudo o que um Viajante Inteligente Precisa</h2>
-                <p class="mt-2 text-lg text-gray-600 max-w-3xl mx-auto">Pensámos em cada detalhe para que a sua única preocupação seja aproveitar a cidade ao máximo.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <!-- Amenity Card 1: Location -->
-                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate">
-                    <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Localização de Ouro</h3>
-                    <p class="text-gray-600">Ao lado do metro Praça da Árvore. Conecte-se à Av. Paulista, Liberdade e ao coração de SP em minutos. Segurança e praticidade numa avenida principal.</p>
-                </div>
-                <!-- Amenity Card 2: Wi-Fi -->
-                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 150ms;">
-                    <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a8 8 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a4 4 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Wi-Fi de Alta Velocidade</h3>
-                    <p class="text-gray-600">Esteja sempre conectado. Perfeito para planear os seus roteiros, trabalhar remotamente ou partilhar as suas aventuras com o mundo.</p>
-                </div>
-                <!-- Amenity Card 3: Kitchen -->
-                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 300ms;">
-                    <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Cozinha Completa</h3>
-                    <p class="text-gray-600">Poupe de verdade! Use a nossa cozinha equipada com micro-ondas, fogão, frigorífico e até AirFryer para preparar as suas refeições.</p>
-                </div>
-                 <!-- Amenity Card 4: Laundry -->
-                 <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 450ms;">
-                    <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12H17c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2.5c1.4 0 2.5-1.1 2.5-2.5V12Z"/><path d="M14.5 9.9c.8-1.2 2.1-2 3.5-2H20c1.1 0 2 .9 2 2v.1"/><path d="M4 12c0-4.4 3.6-8 8-8s8 3.1 8 7.1"/><path d="M8 20.1c-2.3-1.2-4-3.5-4-6.1 0-4.4 3.6-8 8-8 .9 0 1.8.2 2.6.5"/><path d="m5 16 1 1 2-2"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Máquina de Lavar e Secar</h3>
-                    <p class="text-gray-600">Viaje com a mala mais leve. Oferecemos máquina de lavar e secar para os hóspedes, garantindo praticidade total durante a sua estadia.</p>
-                </div>
-                <!-- Amenity Card 5: Entertainment -->
-                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 600ms;">
-                    <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Entretenimento Garantido</h3>
-                    <p class="text-gray-600">Relaxe após um dia de exploração. A nossa sala de convívio tem uma TV Smart com Netflix à sua disposição para maratonar à vontade.</p>
-                </div>
-                <!-- Amenity Card 6: Security -->
-                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 750ms;">
-                    <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Segurança e Tranquilidade</h3>
-                    <p class="text-gray-600">Localizado no seguro bairro da Saúde, numa avenida principal e bem iluminada. Desfrute da cidade com a paz de espírito que você merece.</p>
-                </div>
+    <section id="comodidades">
+        <div class="title-background">
+            <div class="container mx-auto px-6 text-center scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Tudo o que um Viajante Inteligente Precisa</h2>
+                <p class="mt-2 text-lg text-gray-200 max-w-3xl mx-auto">Pensámos em cada detalhe para que a sua única preocupação seja aproveitar a cidade ao máximo.</p>
             </div>
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold">O Nosso Espaço, a sua Casa</h2>
-                <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Um ambiente limpo, moderno e acolhedor à sua espera.</p>
-            </div>
-            <!-- Swiper with updated images from GitHub and new frame class -->
-            <div class="swiper-container mySwiper swiper-square-frame scroll-animate" style="transition-delay: 200ms;">
-                <div class="swiper-wrapper">
-                    <!-- GALLERY IMAGES: Imagens do hostel carregadas do GitHub com nomes numéricos -->
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="[Imagem 1 do hostel]" class="rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="[Imagem 2 do hostel]" class="rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="[Imagem 3 do hostel]" class="rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="[Imagem 4 do hostel]" class="rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="[Imagem 5 do hostel]" class="rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="[Imagem 6 do hostel]" class="rounded-lg"></div>
-                    <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="[Imagem 7 do hostel]" class="rounded-lg"></div>
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-                <!-- Add Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Attractions Section -->
-    <section id="attractions" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold">Explore o Coração de São Paulo</h2>
-                <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">O seu roteiro fica muito mais fácil a partir daqui.</p>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Attraction Card 1 -->
-                <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate">
-                    <img src="https://static.tildacdn.com/tild6166-3331-4161-b863-336636393035/avenida-paulista-em-.webp" alt="[Imagem da Avenida Paulista à noite]" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 text-white">
-                        <h4 class="text-2xl font-bold">Avenida Paulista</h4>
-                        <p class="text-sm">Cultura, arte e o centro financeiro do país.</p>
+        <div class="bg-white py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate">
+                        <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Localização de Ouro</h3>
+                        <p class="text-gray-600">Ao lado do metro Praça da Árvore. Conecte-se à Av. Paulista, Liberdade e ao coração de SP em minutos. Segurança e praticidade numa avenida principal.</p>
                     </div>
-                </div>
-                <!-- Attraction Card 2 -->
-                <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 150ms;">
-                    <img src="https://b3577058.smushcdn.com/3577058/wp-content/uploads/2023/08/o-que-fazer-no-parque-ibirapuera-720x511.jpeg?lossy=1&strip=0&webp=1" alt="[Imagem da ponte no Parque Ibirapuera]" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 text-white">
-                        <h4 class="text-2xl font-bold">Parque Ibirapuera</h4>
-                        <p class="text-sm">O oásis verde de São Paulo para relaxar e exercitar-se.</p>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 150ms;">
+                        <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a8 8 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a4 4 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Wi-Fi de Alta Velocidade</h3>
+                        <p class="text-gray-600">Esteja sempre conectado. Perfeito para planear os seus roteiros, trabalhar remotamente ou partilhar as suas aventuras com o mundo.</p>
                     </div>
-                </div>
-                <!-- Attraction Card 3 -->
-                <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 300ms;">
-                    <img src="https://offloadmedia.feverup.com/saopaulosecreto.com/wp-content/uploads/2023/11/13082943/6513310ce2fcbfe7f28fec7a_20230922_Drone-Bairro-Liberdade_ELJ-0434-1024x768.jpg" alt="[Imagem de uma rua no Bairro da Liberdade com lanternas vermelhas]" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 text-white">
-                        <h4 class="text-2xl font-bold">Bairro da Liberdade</h4>
-                        <p class="text-sm">Um pedaço do Japão em SP, com culinária e cultura ricas.</p>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 300ms;">
+                        <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Cozinha Completa</h3>
+                        <p class="text-gray-600">Poupe de verdade! Use a nossa cozinha equipada com micro-ondas, fogão, frigorífico e até AirFryer para preparar as suas refeições.</p>
                     </div>
-                </div>
-                <!-- Attraction Card 4 -->
-                 <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 450ms;">
-                    <img src="https://s2-g1.glbimg.com/ko1bllgEl8IUu8ksSfJEvZlnUxs=/0x0:620x425/984x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2018/11/14/1111.jpg" alt="[Imagem dos vitrais coloridos do Mercado Municipal de São Paulo]" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                    <div class="absolute bottom-0 left-0 p-6 text-white">
-                        <h4 class="text-2xl font-bold">Mercado Municipal</h4>
-                        <p class="text-sm">Sabores, cores e aromas que nunca irá esquecer.</p>
+                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 450ms;">
+                        <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12H17c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2.5c1.4 0 2.5-1.1 2.5-2.5V12Z"/><path d="M14.5 9.9c.8-1.2 2.1-2 3.5-2H20c1.1 0 2 .9 2 2v.1"/><path d="M4 12c0-4.4 3.6-8 8-8s8 3.1 8 7.1"/><path d="M8 20.1c-2.3-1.2-4-3.5-4-6.1 0-4.4 3.6-8 8-8 .9 0 1.8.2 2.6.5"/><path d="m5 16 1 1 2-2"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Máquina de Lavar e Secar</h3>
+                        <p class="text-gray-600">Viaje com a mala mais leve. Oferecemos máquina de lavar e secar para os hóspedes, garantindo praticidade total durante a sua estadia.</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 600ms;">
+                        <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Entretenimento Garantido</h3>
+                        <p class="text-gray-600">Relaxe após um dia de exploração. A nossa sala de convívio tem uma TV Smart com Netflix à sua disposição para maratonar à vontade.</p>
+                    </div>
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 750ms;">
+                        <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Segurança e Tranquilidade</h3>
+                        <p class="text-gray-600">Localizado no seguro bairro da Saúde, numa avenida principal e bem iluminada. Desfrute da cidade com a paz de espírito que você merece.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold">O que os nossos hóspedes dizem</h2>
-                <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">A experiência de quem já viveu o SP Hostel.</p>
+    <section id="gallery">
+        <div class="title-background">
+            <div class="container mx-auto px-6 text-center scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">O Nosso Espaço, a sua Casa</h2>
+                <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">Um ambiente limpo, moderno e acolhedor à sua espera.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-md scroll-animate">
-                    <p class="text-gray-600 mb-4">"A localização é perfeita! Fica ao lado do metro, o que salvou a minha viagem. Consegui ir para todos os lugares que queria sem gastar quase nada com transporte."</p>
-                    <div class="font-bold text-teal-600">- Joana F., Rio de Janeiro</div>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 200ms;">
-                    <p class="text-gray-600 mb-4">"Hostel limpo, seguro e com um preço que não encontrei em nenhum outro lugar com esta qualidade. A cozinha com airfryer é uma mão na roda. Recomendo demais!"</p>
-                    <div class="font-bold text-teal-600">- Carlos M., Belo Horizonte</div>
-                </div>
-                <div class="bg-white p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 400ms;">
-                    <p class="text-gray-600 mb-4">"O melhor custo-benefício de São Paulo. Você está perto de tudo, num bairro tranquilo e paga um valor justo. A máquina de lavar e secar foi um bónus incrível!"</p>
-                    <div class="font-bold text-teal-600">- Maria S., Salvador</div>
+        </div>
+        <div class="bg-white py-20">
+            <div class="container mx-auto px-6">
+                <div class="swiper-container mySwiper swiper-square-frame scroll-animate" style="transition-delay: 200ms;">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="Quarto compartilhado do hostel com beliches" class="rounded-lg"></div>
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="Área de convivência com sofá e televisão" class="rounded-lg"></div>
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="Cozinha equipada do hostel" class="rounded-lg"></div>
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="Banheiro moderno e limpo com chuveiro" class="rounded-lg"></div>
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="Outra vista do quarto compartilhado" class="rounded-lg"></div>
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="Mesa de jantar na área comum" class="rounded-lg"></div>
+                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="Detalhe da decoração do hostel" class="rounded-lg"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing / Reservation Section -->
-    <section id="pricing" class="py-20 bg-white">
+    <section id="attractions">
+        <div class="title-background">
+            <div class="container mx-auto px-6 text-center scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Explore o Coração de São Paulo</h2>
+                <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">O seu roteiro fica muito mais fácil a partir daqui.</p>
+            </div>
+        </div>
+        <div class="bg-white py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate">
+                        <img src="https://static.tildacdn.com/tild6166-3331-4161-b863-336636393035/avenida-paulista-em-.webp" alt="Avenida Paulista à noite" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h4 class="text-2xl font-bold">Avenida Paulista</h4>
+                            <p class="text-sm">Cultura, arte e o centro financeiro do país.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 150ms;">
+                        <img src="https://b3577058.smushcdn.com/3577058/wp-content/uploads/2023/08/o-que-fazer-no-parque-ibirapuera-720x511.jpeg?lossy=1&strip=0&webp=1" alt="Ponte no Parque Ibirapuera" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h4 class="text-2xl font-bold">Parque Ibirapuera</h4>
+                            <p class="text-sm">O oásis verde de São Paulo para relaxar e exercitar-se.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 300ms;">
+                        <img src="https://offloadmedia.feverup.com/saopaulosecreto.com/wp-content/uploads/2023/11/13082943/6513310ce2fcbfe7f28fec7a_20230922_Drone-Bairro-Liberdade_ELJ-0434-1024x768.jpg" alt="Rua no Bairro da Liberdade com lanternas vermelhas" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h4 class="text-2xl font-bold">Bairro da Liberdade</h4>
+                            <p class="text-sm">Um pedaço do Japão em SP, com culinária e cultura ricas.</p>
+                        </div>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 450ms;">
+                        <img src="https://s2-g1.glbimg.com/ko1bllgEl8IUu8ksSfJEvZlnUxs=/0x0:620x425/984x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2018/11/14/1111.jpg" alt="Vitrais coloridos do Mercado Municipal de São Paulo" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h4 class="text-2xl font-bold">Mercado Municipal</h4>
+                            <p class="text-sm">Sabores, cores e aromas que nunca irá esquecer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+         <div class="title-background">
+            <div class="container mx-auto px-6 text-center scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">O que os nossos hóspedes dizem</h2>
+                <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">A experiência de quem já viveu o SP Hostel.</p>
+            </div>
+        </div>
+         <div class="bg-white py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md scroll-animate">
+                        <p class="text-gray-600 mb-4">"A localização é perfeita! Fica ao lado do metro, o que salvou a minha viagem. Consegui ir para todos os lugares que queria sem gastar quase nada com transporte."</p>
+                        <div class="font-bold text-teal-600">- Joana F., Rio de Janeiro</div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 200ms;">
+                        <p class="text-gray-600 mb-4">"Hostel limpo, seguro e com um preço que não encontrei em nenhum outro lugar com esta qualidade. A cozinha com airfryer é uma mão na roda. Recomendo demais!"</p>
+                        <div class="font-bold text-teal-600">- Carlos M., Belo Horizonte</div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 400ms;">
+                        <p class="text-gray-600 mb-4">"O melhor custo-benefício de São Paulo. Você está perto de tudo, num bairro tranquilo e paga um valor justo. A máquina de lavar e secar foi um bónus incrível!"</p>
+                        <div class="font-bold text-teal-600">- Maria S., Salvador</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="title-background">
         <div class="container mx-auto px-6 text-center scroll-animate">
-            <h2 class="text-3xl md:text-4xl font-bold">Pronto para a Aventura?</h2>
-            <p class="mt-2 text-lg text-gray-600 max-w-2xl mx-auto">Reserve a sua vaga com o melhor preço e na melhor localização. É rápido, fácil e seguro.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">Pronto para a Aventura?</h2>
+            <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">Reserve a sua vaga com o melhor preço e na melhor localização. É rápido, fácil e seguro.</p>
             <button id="open-reserve-modal-main" class="cta-button mt-8 inline-block bg-teal-500 text-white font-bold py-4 px-12 rounded-full hover:bg-teal-600 text-xl">
                 Faça a sua Reserva Agora
             </button>
         </div>
     </section>
 
-    <!-- Reservation Modal -->
     <div id="reservation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 pointer-events-none">
         <div class="modal-content bg-white rounded-lg shadow-xl p-8 max-w-md w-full m-4 transform scale-95">
             <div class="flex justify-between items-center mb-6">
@@ -351,16 +349,37 @@
                 <button id="close-modal-button" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
             </div>
             
-            <!-- Step 1: Date Selection -->
             <div id="step-1-dates">
                 <div class="space-y-4">
                     <div>
                         <label for="checkin-date" class="block text-sm font-medium text-gray-700">Check-in</label>
-                        <input type="date" id="checkin-date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                        <div class="relative mt-1">
+                            <input 
+                                type="text" 
+                                id="checkin-date" 
+                                placeholder="DD/MM/AAAA" 
+                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
+                            <button type="button" id="checkin-calendar-button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-teal-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <div>
                         <label for="checkout-date" class="block text-sm font-medium text-gray-700">Check-out</label>
-                        <input type="date" id="checkout-date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                        <div class="relative mt-1">
+                            <input 
+                                type="text" 
+                                id="checkout-date" 
+                                placeholder="DD/MM/AAAA"
+                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
+                             <button type="button" id="checkout-calendar-button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-teal-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div id="calculation-result" class="mt-6 p-4 bg-teal-50 rounded-lg hidden">
@@ -379,7 +398,6 @@
                 </button>
             </div>
 
-            <!-- Step 2: Method Choice -->
             <div id="step-2-method" class="hidden">
                 <p class="text-center text-gray-600 mb-6">Como prefere fazer a sua reserva?</p>
                 <div class="space-y-4">
@@ -392,7 +410,6 @@
                 </div>
             </div>
 
-            <!-- Step 3: Registration Form -->
             <div id="step-3-form" class="hidden">
                  <p class="text-center text-gray-600 mb-4">Ótimo! Agora preencha os seus dados para solicitar a reserva via WhatsApp.</p>
                  <form id="booking-form">
@@ -420,14 +437,11 @@
                  </form>
             </div>
 
-             <!-- Step 4: Confirmation Message -->
-             <div id="step-4-confirmation" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
-                <!-- Message will be inserted here by JS -->
-            </div>
+              <div id="step-4-confirmation" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
+                </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer id="contact" class="bg-gray-800 text-white">
        <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -461,7 +475,7 @@
         // --- Initialize Swiper Carousel ---
         const swiper = new Swiper('.mySwiper', {
             loop: true,
-            spaceBetween: 20, // Adiciona espaço entre os slides
+            spaceBetween: 20,
             autoplay: {
                 delay: 4000,
                 disableOnInteraction: false,
@@ -519,7 +533,7 @@
             modal.querySelector('.modal-content').classList.add('scale-95');
             setTimeout(() => {
                 modal.classList.add('pointer-events-none');
-                resetForm(); // Reset form completely on close
+                resetForm();
             }, 250);
         };
         
@@ -536,33 +550,26 @@
         const totalNightsSpan = document.getElementById('total-nights');
         const totalPriceSpan = document.getElementById('total-price');
         const dateErrorP = document.getElementById('date-error');
-        
-        const today = new Date();
-        today.setHours(0,0,0,0);
-        checkinInput.setAttribute('min', today.toISOString().split('T')[0]);
 
         function calculatePrice() {
             dateErrorP.textContent = '';
-            const checkinDateStr = checkinInput.value;
-            const checkoutDateStr = checkoutInput.value;
+            
+            const checkinDateStr = checkinInput._flatpickr.selectedDates[0];
+            const checkoutDateStr = checkoutInput._flatpickr.selectedDates[0];
 
             if (!checkinDateStr || !checkoutDateStr) {
                 calculationResultDiv.classList.add('hidden');
                 return;
             }
 
-            const checkinDate = new Date(checkinDateStr + 'T00:00:00');
-            const checkoutDate = new Date(checkoutDateStr + 'T00:00:00');
+            const checkinDate = new Date(checkinDateStr);
+            const checkoutDate = new Date(checkoutDateStr);
             
-            let minCheckoutDate = new Date(checkinDate);
-            minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
-            checkoutInput.setAttribute('min', minCheckoutDate.toISOString().split('T')[0]);
-
             if (checkoutDate <= checkinDate) {
                 calculationResultDiv.classList.add('hidden');
                 if (checkoutDateStr) {
-                   dateErrorP.textContent = 'A data de check-out deve ser posterior à de check-in.';
-                   calculationResultDiv.classList.remove('hidden');
+                    dateErrorP.textContent = 'A data de check-out deve ser posterior à de check-in.';
+                    calculationResultDiv.classList.remove('hidden');
                 }
                 totalNightsSpan.textContent = '0';
                 totalPriceSpan.textContent = `R$ 0,00`;
@@ -578,16 +585,53 @@
             while (currentDate < checkoutDate) {
                 totalNights++;
                 const dayOfWeek = currentDate.getUTCDay();
-                // 0=Dom, 5=Sex, 6=Sáb
-                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) totalPrice += 43; 
-                else totalPrice += 35; // Dias de semana
+                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) totalPrice += 43;
+                else totalPrice += 35;
                 currentDate.setUTCDate(currentDate.getUTCDate() + 1);
             }
 
             totalNightsSpan.textContent = totalNights;
             totalPriceSpan.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
         }
-        
+
+        // --- Flatpickr Initialization ---
+        const checkoutPicker = flatpickr(checkoutInput, {
+            altInput: true,
+            altFormat: "d/m/Y",
+            dateFormat: "Y-m-d",
+            locale: 'pt',
+            placeholder: "DD/MM/AAAA",
+            onChange: function(selectedDates, dateStr, instance) {
+                calculatePrice();
+            },
+            clickOpens: false 
+        });
+
+        const checkinPicker = flatpickr(checkinInput, {
+            altInput: true,
+            altFormat: "d/m/Y",
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            locale: 'pt',
+            placeholder: "DD/MM/AAAA",
+            onChange: function(selectedDates, dateStr, instance) {
+                if (selectedDates[0]) {
+                    let minCheckoutDate = new Date(selectedDates[0]);
+                    minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
+                    checkoutPicker.set('minDate', minCheckoutDate);
+                }
+                calculatePrice();
+            },
+            clickOpens: false
+        });
+
+        document.getElementById('checkin-calendar-button').addEventListener('click', () => {
+            checkinPicker.open();
+        });
+        document.getElementById('checkout-calendar-button').addEventListener('click', () => {
+            checkoutPicker.open();
+        });
+
         // --- Form Navigation and Submission ---
         const confirmDatesButton = document.getElementById('confirm-dates-button');
         const bookOnBookingButton = document.getElementById('book-on-booking-button');
@@ -596,9 +640,11 @@
 
         function resetForm() {
             bookingForm.reset();
-            checkinInput.value = '';
-            checkoutInput.value = '';
-            checkoutInput.removeAttribute('min');
+            
+            checkinPicker.clear();
+            checkoutPicker.clear();
+            checkoutPicker.set('minDate', null);
+            
             calculationResultDiv.classList.add('hidden');
             dateErrorP.textContent = '';
             
@@ -610,14 +656,14 @@
         }
 
         confirmDatesButton.addEventListener('click', () => {
-             if(totalNightsSpan.textContent === '0' || dateErrorP.textContent !== '') {
-                 dateErrorP.textContent = 'Por favor, selecione datas válidas para continuar.';
-                 calculationResultDiv.classList.remove('hidden');
-                 return;
-             }
-             modalTitle.textContent = "Escolha como Reservar";
-             step1Dates.classList.add('hidden');
-             step2Method.classList.remove('hidden');
+            if (totalNightsSpan.textContent === '0' || dateErrorP.textContent !== '') {
+                dateErrorP.textContent = 'Por favor, selecione datas válidas para continuar.';
+                calculationResultDiv.classList.remove('hidden');
+                return;
+            }
+            modalTitle.textContent = "Escolha como Reservar";
+            step1Dates.classList.add('hidden');
+            step2Method.classList.remove('hidden');
         });
 
         bookOnBookingButton.addEventListener('click', () => {
@@ -626,20 +672,16 @@
         });
 
         bookOnWhatsappButton.addEventListener('click', () => {
-             modalTitle.textContent = "Dados para Reserva";
-             step2Method.classList.add('hidden');
-             step3Form.classList.remove('hidden');
+            modalTitle.textContent = "Dados para Reserva";
+            step2Method.classList.add('hidden');
+            step3Form.classList.remove('hidden');
         });
-
-        checkinInput.addEventListener('change', calculatePrice);
-        checkoutInput.addEventListener('change', calculatePrice);
 
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Get all data
-            const checkin = new Date(checkinInput.value + 'T00:00:00').toLocaleDateString('pt-BR');
-            const checkout = new Date(checkoutInput.value + 'T00:00:00').toLocaleDateString('pt-BR');
+            const checkin = new Date(checkinInput._flatpickr.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+            const checkout = new Date(checkoutInput._flatpickr.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
             const totalNights = totalNightsSpan.textContent;
             const totalPrice = totalPriceSpan.textContent;
             const fullName = document.getElementById('full-name').value;
@@ -647,12 +689,10 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
 
-            // Construct the WhatsApp message
             const message = `Olá! Gostaria de solicitar uma reserva no SP Hostel.\n\n*Detalhes da Reserva:*\n---------------------\n*Check-in:* ${checkin}\n*Check-out:* ${checkout}\n*Total de Noites:* ${totalNights}\n*Valor Total:* ${totalPrice}\n\n*Os meus Dados:*\n-----------------\n*Nome:* ${fullName}\n*CPF:* ${cpf}\n*Email:* ${email}\n*Telemóvel:* ${phone}\n\nAguardo a confirmação. Obrigado!`;
             
             const whatsappUrl = `https://wa.me/5511940696636?text=${encodeURIComponent(message)}`;
 
-            // Show confirmation message and redirect
             step3Form.classList.add('hidden');
             step4Confirmation.innerHTML = '<p class="font-semibold">Tudo pronto!</p><p>Será redirecionado para o WhatsApp para enviar o seu pedido.</p>';
             step4Confirmation.classList.remove('hidden');
