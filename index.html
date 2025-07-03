@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <!-- Metadados e Configurações Iniciais do Documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SP Hostel - A sua Casa em São Paulo</title>
     
+    <!-- Links para bibliotecas externas de estilo e script (Tailwind, Swiper, Flatpickr) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -14,10 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
     
+    <!-- Fontes do Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
+    <!-- Estilos CSS personalizados para a página -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -89,16 +93,16 @@
             background-color: #f59e0b !important;
         }
 
-        /* Estilo para o frame do carrossel, garantindo que ele seja quadrado */
-        .swiper-square-frame {
+        /* Novo Estilo para o carrossel em formato paisagem */
+        .swiper-landscape-frame {
             width: 100%;
             height: auto;
-            aspect-ratio: 1 / 1; /* Proporção de 1:1 (quadrado) */
+            aspect-ratio: 16 / 9; /* Proporção de paisagem */
             margin: auto;
             overflow: hidden;
             border-radius: 0.5rem;
         }
-        .swiper-square-frame .swiper-slide img {
+        .swiper-landscape-frame .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
@@ -138,11 +142,16 @@
 </head>
 <body class="bg-white">
 
+    <!-- CABEÇALHO: Fica fixo no topo da página e contém o logo e o menu de navegação. -->
     <header class="bg-white shadow-md sticky top-0 z-50">
+        <!-- CONTAINER DO CABEÇALHO: Limita a largura do conteúdo para que ele não se estique demais em telas grandes. -->
         <nav class="container mx-auto px-6 py-3">
+            <!-- DIV FLEX CONTAINER: Organiza os itens (logo e menu) em uma linha, com espaço entre eles. -->
             <div class="flex justify-between items-center">
+                <!-- LOGO: O nome do hostel, que também é um link para o topo da página. -->
                 <a href="#" class="text-2xl font-bold text-teal-600">SP Hostel</a>
                 
+                <!-- MENU PARA DESKTOP: Contém os links de navegação. Fica escondido em telas pequenas (celulares). -->
                 <div class="hidden md:flex space-x-6 items-center">
                     <a href="#comodidades" class="text-gray-600 hover:text-teal-500">Comodidades</a>
                     <a href="#explore" class="text-gray-600 hover:text-teal-500">Local e Fotos</a>
@@ -153,6 +162,7 @@
                     </button>
                 </div>
 
+                <!-- BOTÃO DO MENU MOBILE: Ícone de "hambúrguer" que só aparece em telas pequenas para abrir o menu. -->
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-600 hover:text-teal-500 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -162,6 +172,7 @@
                 </div>
             </div>
 
+            <!-- MENU MOBILE (EXPANSÍVEL): Este bloco fica escondido e só aparece quando o botão de menu mobile é clicado. -->
             <div id="mobile-menu" class="hidden md:hidden mt-4">
                 <a href="#comodidades" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Comodidades</a>
                 <a href="#explore" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Local e Fotos</a>
@@ -174,7 +185,9 @@
         </nav>
     </header>
 
+    <!-- SEÇÃO HERO: A primeira coisa que o visitante vê. Uma grande imagem de fundo com um título chamativo e um botão. -->
     <section class="hero-gradient text-white h-[70vh] md:h-[90vh] flex items-center justify-center">
+        <!-- DIV DE CONTEÚDO DO HERO: Centraliza o texto e o botão na seção. -->
         <div class="text-center max-w-3xl px-4">
             <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wider leading-tight text-shadow-lg">A sua Aventura em SP Começa Aqui</h1>
             <p class="mt-4 text-lg md:text-xl font-light text-shadow">A base perfeita para explorar São Paulo. Conecte-se, poupe e viva a cidade como um local, com o máximo de conforto.</p>
@@ -184,52 +197,70 @@
         </div>
     </section>
 
+    <!-- SEÇÃO COMODIDADES: Mostra as vantagens e facilidades que o hostel oferece. -->
     <section id="comodidades">
+        <!-- BANNER DE TÍTULO DA SEÇÃO: Uma imagem de fundo com efeito parallax para o título da seção. -->
         <div class="title-background">
+            <!-- CONTAINER DO TÍTULO: Centraliza o título e o subtítulo. -->
             <div class="container mx-auto px-6 text-center scroll-animate">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Tudo o que um Viajante Inteligente Precisa</h2>
                 <p class="mt-2 text-lg text-gray-200 max-w-3xl mx-auto">Pensámos em cada detalhe para que a sua única preocupação seja aproveitar a cidade ao máximo.</p>
             </div>
         </div>
+        <!-- CORPO DA SEÇÃO COMODIDADES: Onde os itens são listados. -->
         <div class="bg-white py-20">
+            <!-- CONTAINER DOS ITENS: Limita a largura da lista de comodidades. -->
             <div class="container mx-auto px-6">
+                <!-- GRID DE COMODIDADES: Organiza os itens em uma grade que se adapta a diferentes telas (1 coluna no celular, 2 em tablets, 3 em desktops). -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- ITEM 'LOCALIZAÇÃO DE OURO': Bloco individual que descreve uma comodidade. -->
                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate">
+                        <!-- DIV DO ÍCONE: Circulo colorido que contém o ícone SVG. -->
                         <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Localização de Ouro</h3>
                         <p class="text-gray-600">Ao lado do metro Praça da Árvore. Conecte-se à Av. Paulista, Liberdade e ao coração de SP em minutos. Segurança e praticidade numa avenida principal.</p>
                     </div>
+                    <!-- ITEM 'WI-FI DE ALTA VELOCIDADE': Bloco individual que descreve uma comodidade. -->
                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 150ms;">
+                        <!-- DIV DO ÍCONE: Circulo colorido que contém o ícone SVG. -->
                         <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a8 8 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a4 4 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Wi-Fi de Alta Velocidade</h3>
                         <p class="text-gray-600">Esteja sempre conectado. Perfeito para planear os seus roteiros, trabalhar remotamente ou partilhar as suas aventuras com o mundo.</p>
                     </div>
+                    <!-- ITEM 'COZINHA COMPLETA': Bloco individual que descreve uma comodidade. -->
                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 300ms;">
+                        <!-- DIV DO ÍCONE: Circulo colorido que contém o ícone SVG. -->
                         <div class="inline-block p-4 bg-teal-100 text-teal-600 rounded-full mb-4">
                              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Cozinha Completa</h3>
                         <p class="text-gray-600">Poupe de verdade! Use a nossa cozinha equipada com micro-ondas, fogão, frigorífico e até AirFryer para preparar as suas refeições.</p>
                     </div>
-                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 450ms;">
+                    <!-- ITEM 'MÁQUINA DE LAVAR E SECAR': Bloco individual que descreve uma comodidade. -->
+                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 450ms;">
+                        <!-- DIV DO ÍCONE: Circulo colorido que contém o ícone SVG. -->
                         <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12H17c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2.5c1.4 0 2.5-1.1 2.5-2.5V12Z"/><path d="M14.5 9.9c.8-1.2 2.1-2 3.5-2H20c1.1 0 2 .9 2 2v.1"/><path d="M4 12c0-4.4 3.6-8 8-8s8 3.1 8 7.1"/><path d="M8 20.1c-2.3-1.2-4-3.5-4-6.1 0-4.4 3.6-8 8-8 .9 0 1.8.2 2.6.5"/><path d="m5 16 1 1 2-2"/></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Máquina de Lavar e Secar</h3>
                         <p class="text-gray-600">Viaje com a mala mais leve. Oferecemos máquina de lavar e secar para os hóspedes, garantindo praticidade total durante a sua estadia.</p>
                     </div>
+                    <!-- ITEM 'ENTRETENIMENTO GARANTIDO': Bloco individual que descreve uma comodidade. -->
                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 600ms;">
+                        <!-- DIV DO ÍCONE: Circulo colorido que contém o ícone SVG. -->
                         <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Entretenimento Garantido</h3>
                         <p class="text-gray-600">Relaxe após um dia de exploração. A nossa sala de convívio tem uma TV Smart com Netflix à sua disposição para maratonar à vontade.</p>
                     </div>
+                    <!-- ITEM 'SEGURANÇA E TRANQUILIDADE': Bloco individual que descreve uma comodidade. -->
                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 750ms;">
+                        <!-- DIV DO ÍCONE: Circulo colorido que contém o ícone SVG. -->
                         <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         </div>
@@ -241,74 +272,105 @@
         </div>
     </section>
 
+    <!-- SEÇÃO EXPLORE: Combina a localização (mapa), a galeria de fotos e o Street View. -->
     <section id="explore">
+        <!-- BANNER DE TÍTULO DA SEÇÃO -->
         <div class="title-background">
             <div class="container mx-auto px-6 text-center scroll-animate">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Explore o Nosso Espaço e a Vizinhança</h2>
-                <p class="mt-2 text-lg text-gray-200 max-w-3xl mx-auto">Veja as fotos do nosso hostel e descubra como é fácil chegar aos principais pontos de São Paulo.</p>
+                <p class="mt-2 text-lg text-gray-200 max-w-3xl mx-auto">Veja as fotos do hostel, a localização exata no mapa e passeie pela nossa rua.</p>
             </div>
         </div>
+        <!-- CORPO DA SEÇÃO -->
         <div class="bg-white py-20">
+            <!-- CONTAINER PRINCIPAL: Limita a largura e centraliza o conteúdo. -->
             <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                    
-                    <div class="scroll-animate">
-                        <div class="flex justify-center mb-6 space-x-2 md:space-x-4">
-                            <button id="map-tab-button" class="tab-button active font-bold py-2 px-6 rounded-full bg-gray-200 text-gray-800">
-                                Mapa 2D
-                            </button>
-                            <button id="street-view-tab-button" class="tab-button font-bold py-2 px-6 rounded-full bg-gray-200 text-gray-800">
-                                Street View 3D
-                            </button>
-                        </div>
+                
+                <!-- BOTÕES DE SELEÇÃO: MAPA / STREET VIEW -->
+                <div class="flex justify-center mb-6 space-x-4 scroll-animate">
+                    <button id="map-tab-button" class="tab-button active font-bold py-2 px-6 rounded-full bg-gray-200 text-gray-800">
+                        Mapa
+                    </button>
+                    <button id="street-view-tab-button" class="tab-button font-bold py-2 px-6 rounded-full bg-gray-200 text-gray-800">
+                        Street View
+                    </button>
+                </div>
 
-                        <div id="map-pane" class="rounded-lg overflow-hidden shadow-2xl">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.166885369658!2d-46.6341499237691!3d-23.598212162391074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a32535698b5%3A0x21e78508672d061c!2sAv.%20Bosque%20da%20Sa%C3%BAde%2C%20236%20-%20Sa%C3%BAde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004144-070!5e0!3m2!1spt-BR!2sbr!4v1720056956799!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        <div id="street-view-pane" class="hidden rounded-lg overflow-hidden shadow-2xl">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.1669865181055!2d-46.63414458376912!3d-23.59820841239104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a32535698b5%3A0x21e78508672d061c!2sAv.%20Bosque%20da%20Sa%C3%BAde%2C%20236%20-%20Sa%C3%BAde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004144-070!5e0!3m2!1spt-BR!2sbr!4v1720057002597!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                <!-- CONTAINER PARA O CONTEÚDO DO MAPA E STREET VIEW -->
+                <div id="map-street-view-container" class="relative w-full aspect-video rounded-lg overflow-hidden shadow-2xl mb-16 scroll-animate">
+                    <!-- PAINEL DO MAPA 2D -->
+                    <div id="map-pane" class="w-full h-full">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.166885369658!2d-46.6341499237691!3d-23.598212162391074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a32535698b5%3A0x21e78508672d061c!2sAv.%20Bosque%20da%20Sa%C3%BAde%2C%20236%20-%20Sa%C3%BAde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004144-070!5e0!3m2!1spt-BR!2sbr!4v1720056956799!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
+                    <!-- PAINEL DO STREET VIEW 3D -->
+                    <div id="street-view-pane" class="w-full h-full hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1751508797436!6m8!1m7!1sGn4TfDP1QRiysaQ-ftZ3KA!2m2!1d-23.61144678190259!2d-46.63586025813155!3f187.03206!4f0!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
 
-                    <div class="scroll-animate" style="transition-delay: 200ms;">
-                        <div class="swiper-container mySwiper swiper-square-frame">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="Quarto compartilhado do hostel com beliches" class="rounded-lg"></div>
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="Área de convivência com sofá e televisão" class="rounded-lg"></div>
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="Cozinha equipada do hostel" class="rounded-lg"></div>
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="Banheiro moderno e limpo com chuveiro" class="rounded-lg"></div>
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="Outra vista do quarto compartilhado" class="rounded-lg"></div>
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="Mesa de jantar na área comum" class="rounded-lg"></div>
-                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="Detalhe da decoração do hostel" class="rounded-lg"></div>
-                            </div>
-                            <div class="swiper-pagination"></div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
+                <!-- CARROSSEL DE FOTOS -->
+                <div class="scroll-animate">
+                    <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Nossos Ambientes</h3>
+                    <!-- CONTAINER DO CARROSSEL: Estrutura principal do Swiper.js. -->
+                    <div class="swiper-container mySwiper swiper-landscape-frame shadow-2xl">
+                        <!-- WRAPPER DO CARROSSEL: Contém todos os slides (imagens). -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides com fallback de imagem -->
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="Ambiente do hostel 1" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="Ambiente do hostel 2" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="Ambiente do hostel 3" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="Ambiente do hostel 4" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="Ambiente do hostel 5" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="Ambiente do hostel 6" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="Ambiente do hostel 7" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/8.jpg" alt="Ambiente do hostel 8" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/9.jpg" alt="Ambiente do hostel 9" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/10.jpg" alt="Ambiente do hostel 10" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/11.jpg" alt="Ambiente do hostel 11" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/12.jpg" alt="Ambiente do hostel 12" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/13.jpg" alt="Ambiente do hostel 13" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/14.jpg" alt="Ambiente do hostel 14" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
+                            <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/15.jpg" alt="Ambiente do hostel 15" class="rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x450/cccccc/ffffff?text=loading...';"></div>
                         </div>
+                        <!-- PAGINAÇÃO DO CARROSSEL: As bolinhas que indicam em qual slide você está. -->
+                        <div class="swiper-pagination"></div>
+                        <!-- BOTÃO 'PRÓXIMO': Seta para avançar para a próxima foto. -->
+                        <div class="swiper-button-next"></div>
+                        <!-- BOTÃO 'ANTERIOR': Seta para voltar para a foto anterior. -->
+                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- SEÇÃO ATRAÇÕES: Mostra cartões com os principais pontos turísticos próximos. -->
     <section id="attractions">
+        <!-- BANNER DE TÍTULO DA SEÇÃO -->
         <div class="title-background">
             <div class="container mx-auto px-6 text-center scroll-animate">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Explore o Coração de São Paulo</h2>
                 <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">O seu roteiro fica muito mais fácil a partir daqui.</p>
             </div>
         </div>
+        <!-- CORPO DA SEÇÃO ATRAÇÕES -->
         <div class="bg-white py-20">
+            <!-- CONTAINER DOS CARTÕES -->
             <div class="container mx-auto px-6">
+                <!-- GRID DE ATRAÇÕES: Organiza os cartões em uma grade. -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- CARTÃO DE ATRAÇÃO INDIVIDUAL: Bloco para a Avenida Paulista. -->
                     <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate">
                         <img src="https://static.tildacdn.com/tild6166-3331-4161-b863-336636393035/avenida-paulista-em-.webp" alt="Avenida Paulista à noite" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <!-- DIV DE SOBREPOSIÇÃO: Cria um gradiente escuro na parte inferior da imagem para o texto ser legível. -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <!-- DIV DE TEXTO DO CARTÃO: Contém o nome e a descrição da atração. -->
                         <div class="absolute bottom-0 left-0 p-6 text-white">
                             <h4 class="text-2xl font-bold">Avenida Paulista</h4>
                             <p class="text-sm">Cultura, arte e o centro financeiro do país.</p>
                         </div>
                     </div>
+                    <!-- CARTÃO DE ATRAÇÃO INDIVIDUAL: Bloco para o Parque Ibirapuera. -->
                     <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 150ms;">
                         <img src="https://b3577058.smushcdn.com/3577058/wp-content/uploads/2023/08/o-que-fazer-no-parque-ibirapuera-720x511.jpeg?lossy=1&strip=0&webp=1" alt="Ponte no Parque Ibirapuera" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -317,6 +379,7 @@
                             <p class="text-sm">O oásis verde de São Paulo para relaxar e exercitar-se.</p>
                         </div>
                     </div>
+                    <!-- CARTÃO DE ATRAÇÃO INDIVIDUAL: Bloco para o Bairro da Liberdade. -->
                     <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 300ms;">
                         <img src="https://offloadmedia.feverup.com/saopaulosecreto.com/wp-content/uploads/2023/11/13082943/6513310ce2fcbfe7f28fec7a_20230922_Drone-Bairro-Liberdade_ELJ-0434-1024x768.jpg" alt="Rua no Bairro da Liberdade com lanternas vermelhas" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
@@ -325,7 +388,8 @@
                             <p class="text-sm">Um pedaço do Japão em SP, com culinária e cultura ricas.</p>
                         </div>
                     </div>
-                    <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 450ms;">
+                    <!-- CARTÃO DE ATRAÇÃO INDIVIDUAL: Bloco para o Mercado Municipal. -->
+                     <div class="relative rounded-lg overflow-hidden shadow-lg group scroll-animate" style="transition-delay: 450ms;">
                         <img src="https://s2-g1.glbimg.com/ko1bllgEl8IUu8ksSfJEvZlnUxs=/0x0:620x425/984x0/smart/filters:strip_icc()/s.glbimg.com/jo/g1/f/original/2018/11/14/1111.jpg" alt="Vitrais coloridos do Mercado Municipal de São Paulo" class="w-full h-96 object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-6 text-white">
@@ -338,24 +402,33 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DEPOIMENTOS: Exibe comentários de hóspedes anteriores. -->
     <section id="testimonials">
-        <div class="title-background">
+        <!-- BANNER DE TÍTULO DA SEÇÃO -->
+         <div class="title-background">
             <div class="container mx-auto px-6 text-center scroll-animate">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">O que os nossos hóspedes dizem</h2>
                 <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">A experiência de quem já viveu o SP Hostel.</p>
             </div>
         </div>
-        <div class="bg-white py-20">
+        <!-- CORPO DA SEÇÃO DEPOIMENTOS -->
+         <div class="bg-white py-20">
+            <!-- CONTAINER DOS DEPOIMENTOS -->
             <div class="container mx-auto px-6">
+                <!-- GRID DE DEPOIMENTOS: Organiza os depoimentos em uma grade. -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- CARTÃO DE DEPOIMENTO 1 -->
                     <div class="bg-white p-8 rounded-lg shadow-md scroll-animate">
                         <p class="text-gray-600 mb-4">"A localização é perfeita! Fica ao lado do metro, o que salvou a minha viagem. Consegui ir para todos os lugares que queria sem gastar quase nada com transporte."</p>
+                        <!-- DIV COM O NOME DO HÓSPEDE -->
                         <div class="font-bold text-teal-600">- Joana F., Rio de Janeiro</div>
                     </div>
+                    <!-- CARTÃO DE DEPOIMENTO 2 -->
                     <div class="bg-white p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 200ms;">
                         <p class="text-gray-600 mb-4">"Hostel limpo, seguro e com um preço que não encontrei em nenhum outro lugar com esta qualidade. A cozinha com airfryer é uma mão na roda. Recomendo demais!"</p>
                         <div class="font-bold text-teal-600">- Carlos M., Belo Horizonte</div>
                     </div>
+                    <!-- CARTÃO DE DEPOIMENTO 3 -->
                     <div class="bg-white p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 400ms;">
                         <p class="text-gray-600 mb-4">"O melhor custo-benefício de São Paulo. Você está perto de tudo, num bairro tranquilo e paga um valor justo. A máquina de lavar e secar foi um bónus incrível!"</p>
                         <div class="font-bold text-teal-600">- Maria S., Salvador</div>
@@ -365,7 +438,9 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DE CHAMADA FINAL (CALL TO ACTION): Última chance de convencer o visitante a reservar. -->
     <section id="pricing" class="title-background">
+        <!-- CONTAINER DO CONTEÚDO -->
         <div class="container mx-auto px-6 text-center scroll-animate">
             <h2 class="text-3xl md:text-4xl font-bold text-white">Pronto para a Aventura?</h2>
             <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">Reserve a sua vaga com o melhor preço e na melhor localização. É rápido, fácil e seguro.</p>
@@ -375,17 +450,24 @@
         </div>
     </section>
     
+    <!-- MODAL DE RESERVA (POP-UP): Fica escondido e sobrepõe a página quando ativado. -->
     <div id="reservation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 pointer-events-none">
+        <!-- CONTEÚDO DO MODAL: A "caixa" branca que contém o formulário. -->
         <div class="modal-content bg-white rounded-lg shadow-xl p-8 max-w-md w-full m-4 transform scale-95">
+            <!-- CABEÇALHO DO MODAL: Contém o título e o botão de fechar. -->
             <div class="flex justify-between items-center mb-6">
                 <h3 id="modal-title" class="text-2xl font-bold">Calcular e Reservar</h3>
                 <button id="close-modal-button" class="text-gray-500 hover:text-gray-800 text-3xl">×</button>
             </div>
             
+            <!-- ETAPA 1: SELEÇÃO DE DATAS. Fica visível no início. -->
             <div id="step-1-dates">
+                <!-- DIV QUE AGRUPA OS CAMPOS DE DATA -->
                 <div class="space-y-4">
+                    <!-- DIV DO CAMPO DE CHECK-IN -->
                     <div>
                         <label for="checkin-date" class="block text-sm font-medium text-gray-700">Check-in</label>
+                        <!-- DIV RELATIVA para posicionar o ícone de calendário dentro do campo. -->
                         <div class="relative mt-1">
                             <input type="text" id="checkin-date" placeholder="DD/MM/AAAA" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
                             <button type="button" id="checkin-calendar-button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-teal-500">
@@ -393,6 +475,7 @@
                             </button>
                         </div>
                     </div>
+                    <!-- DIV DO CAMPO DE CHECK-OUT -->
                     <div>
                         <label for="checkout-date" class="block text-sm font-medium text-gray-700">Check-out</label>
                         <div class="relative mt-1">
@@ -403,11 +486,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- RESULTADO DO CÁLCULO: Mostra o total de noites e o preço. Fica escondido até as datas serem selecionadas. -->
                 <div id="calculation-result" class="mt-6 p-4 bg-teal-50 rounded-lg hidden">
+                    <!-- LINHA 'TOTAL DE DIÁRIAS' -->
                     <div class="flex justify-between items-center">
                         <span class="text-gray-700">Total de diárias:</span>
                         <span id="total-nights" class="font-bold text-lg">0</span>
                     </div>
+                    <!-- LINHA 'VALOR TOTAL' -->
                     <div class="flex justify-between items-center mt-2">
                         <span class="text-gray-700">Valor Total:</span>
                         <span id="total-price" class="font-bold text-xl text-teal-600">R$ 0,00</span>
@@ -419,8 +505,10 @@
                 </button>
             </div>
 
+            <!-- ETAPA 2: ESCOLHA DO MÉTODO DE RESERVA. Fica escondida. -->
             <div id="step-2-method" class="hidden">
                 <p class="text-center text-gray-600 mb-6">Como prefere fazer a sua reserva?</p>
+                <!-- DIV que agrupa os botões de método -->
                 <div class="space-y-4">
                      <button id="book-on-booking-button" class="w-full cta-button bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700">
                         Reservar pelo Booking.com
@@ -431,23 +519,29 @@
                 </div>
             </div>
 
+            <!-- ETAPA 3: FORMULÁRIO DE DADOS PESSOAIS. Fica escondida. -->
             <div id="step-3-form" class="hidden">
                  <p class="text-center text-gray-600 mb-4">Ótimo! Agora preencha os seus dados para solicitar a reserva via WhatsApp.</p>
                  <form id="booking-form">
-                    <div class="space-y-4">
-                        <div>
+                    <!-- DIV que agrupa os campos do formulário -->
+                     <div class="space-y-4">
+                        <!-- DIV do campo 'Nome Completo' -->
+                          <div>
                                <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
                                <input type="text" id="full-name" name="Nome Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                           </div>
-                        <div>
+                        <!-- DIV do campo 'CPF' -->
+                          <div>
                             <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
                             <input type="text" id="cpf" name="CPF" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                          </div>
-                        <div>
+                        <!-- DIV do campo 'Email' -->
+                          <div>
                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                                <input type="email" id="email" name="Email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                           </div>
-                        <div>
+                        <!-- DIV do campo 'Telemóvel' -->
+                          <div>
                                <label for="phone" class="block text-sm font-medium text-gray-700">Telemóvel (Whatsapp)</label>
                                <input type="tel" id="phone" name="Telemóvel" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                           </div>
@@ -458,18 +552,24 @@
                  </form>
             </div>
 
+            <!-- ETAPA 4: MENSAGEM DE CONFIRMAÇÃO. Fica escondida. -->
             <div id="step-4-confirmation" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
             </div>
         </div>
     </div>
 
+    <!-- RODAPÉ: Seção final da página com informações de contato e links. -->
     <footer id="contact" class="bg-gray-800 text-white">
-        <div class="container mx-auto px-6 py-12">
+        <!-- CONTAINER DO RODAPÉ: Limita a largura do conteúdo. -->
+       <div class="container mx-auto px-6 py-12">
+            <!-- GRID DO RODAPÉ: Organiza o conteúdo em 3 colunas em telas grandes. -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- COLUNA 1: LOGO E DESCRIÇÃO -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">SP Hostel</h3>
                     <p class="text-gray-400">A sua melhor opção de hospedagem económica e inteligente em São Paulo.</p>
                 </div>
+                <!-- COLUNA 2: INFORMAÇÕES DE CONTATO -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Contacto</h3>
                     <p class="text-gray-400">Av. Bosque da Saúde, 236</p>
@@ -477,20 +577,24 @@
                     <p class="text-gray-400 mt-2"><strong>Whatsapp:</strong> +55 11 94069-6636</p>
                     <p class="text-gray-400"><strong>Email:</strong> luanmax.contato11@gmail.com</p>
                 </div>
+                <!-- COLUNA 3: REDES SOCIAIS -->
                 <div>
                     <h3 class="text-xl font-bold mb-4">Siga-nos</h3>
+                    <!-- DIV FLEX para alinhar os ícones das redes sociais. -->
                     <div class="flex justify-center md:justify-start space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.585.069-4.85c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.644-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.27.058 1.688.072 4.948.072s3.68-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.358-2.617-6.78-6.979-6.98C15.688.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"></path></svg></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.214 3.791 4.649-.69.188-1.452.23-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.588-7.52 2.588-.49 0-.974-.028-1.455-.086 2.679 1.726 5.862 2.742 9.283 2.742 11.122 0 17.22-9.22 17.22-17.22 0-.262-.006-.522-.018-.781A12.309 12.309 0 0024 4.557z"></path></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616v.064c0 2.298 1.634 4.214 3.791 4.649-.69.188-1.452.23-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.209 1.623-5.007 2.588-8.074 2.588-.525 0-1.043-.031-1.555-.091 2.831 1.823 6.205 2.886 9.882 2.886 11.857 0 18.329-9.823 18.329-18.329 0-.279-.006-.557-.018-.834.84-.606 1.568-1.36 2.143-2.223z"></path></svg></a>
                     </div>
                 </div>
             </div>
+            <!-- DIV DOS DIREITOS AUTORAIS: Linha final do rodapé. -->
             <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500">
                 <p>© 2024 SP Hostel. Todos os direitos reservados.</p>
             </div>
        </div>
     </footer>
 
+    <!-- Scripts JavaScript: Toda a interatividade da página é controlada aqui. -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // --- Inicialização do Carrossel de Fotos (Swiper) ---
@@ -556,7 +660,6 @@
             mapTabButton.classList.remove('active');
         });
 
-
         // --- Controle e Estado do Modal de Reserva ---
         const modal = document.getElementById('reservation-modal');
         const modalTitle = document.getElementById('modal-title');
@@ -613,7 +716,7 @@
             }
             
             if (checkoutDate <= checkinDate) {
-                calculationResultDiv.classList.remove('hidden'); // Corrigido de .remove para .classList.remove
+                calculationResultDiv.classList.remove('hidden');
                 dateErrorP.textContent = 'A data de check-out deve ser posterior à de check-in.';
                 totalNightsSpan.textContent = '0';
                 totalPriceSpan.textContent = `R$ 0,00`;
@@ -630,8 +733,11 @@
                 totalNights++;
                 const dayOfWeek = currentDate.getUTCDay();
                 // 0=Domingo, 5=Sexta, 6=Sábado
-                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) totalPrice += 43; // Preço Fim de Semana
-                else totalPrice += 35; // Preço Dia de Semana
+                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) {
+                    totalPrice += 43; // Preço Fim de Semana
+                } else {
+                    totalPrice += 35; // Preço Dia de Semana
+                }
                 currentDate.setUTCDate(currentDate.getUTCDate() + 1);
             }
 
