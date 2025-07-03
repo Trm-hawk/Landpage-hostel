@@ -12,7 +12,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
@@ -20,8 +22,8 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-       }
-        /* HERO IMAGE */
+        }
+        /* HERO IMAGE: Estilo para a imagem principal no topo da página */
         .hero-gradient {
             position: relative;
             background-image: url('https://raw.githubusercontent.com/Trm-hawk/imagens/main/8.jpg');
@@ -40,6 +42,7 @@
             position: relative;
             z-index: 2;
         }
+        /* Efeitos de animação para os botões */
         .cta-button {
             transition: all 0.3s ease;
         }
@@ -47,7 +50,7 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
         }
-        /* Modal styles */
+        /* Estilos para a janela Modal (pop-up de reserva) */
         .modal {
             transition: opacity 0.25s ease;
         }
@@ -55,7 +58,7 @@
             transition: transform 0.25s ease;
         }
         
-        /* Scroll Animation */
+        /* Animação de entrada dos elementos ao rolar a página */
         .scroll-animate {
             opacity: 0;
             transform: translateY(40px);
@@ -66,7 +69,7 @@
             transform: translateY(0);
         }
 
-        /* Swiper Carousel Customization */
+        /* Customização do Carrossel de Fotos (Swiper) */
         .swiper-button-next, .swiper-button-prev {
             color: #ffffff;
             background-color: rgba(0, 0, 0, 0.5);
@@ -86,12 +89,11 @@
             background-color: #f59e0b !important;
         }
 
-        /* Styles for 600x600 Carousel Frame */
+        /* Estilo para o frame do carrossel, garantindo que ele seja quadrado */
         .swiper-square-frame {
             width: 100%;
-            max-width: 600px;
             height: auto;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1; /* Proporção de 1:1 (quadrado) */
             margin: auto;
             overflow: hidden;
             border-radius: 0.5rem;
@@ -99,23 +101,22 @@
         .swiper-square-frame .swiper-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
         }
         
-        /* --- MUDANÇA AQUI --- */
-        /* Novo estilo para os Banners de Título de Seção */
+        /* Banner de Título de Seção com Efeito Parallax */
         .title-background {
             background-image: url('https://raw.githubusercontent.com/Trm-hawk/imagens/main/9.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Efeito Parallax */
             position: relative;
-            padding: 4rem 1.5rem; /* Espaçamento interno do banner */
+            padding: 4rem 1.5rem; 
         }
         .title-background::before {
             content: '';
             position: absolute;
-            inset: 0; /* Atalho para top, right, bottom, left: 0 */
+            inset: 0; 
             background-color: rgba(0, 0, 0, 0.6); /* Sobreposição escura para legibilidade */
             z-index: 1;
         }
@@ -124,9 +125,18 @@
             z-index: 2; /* Conteúdo acima da sobreposição */
         }
 
+        /* Estilos para os botões de aba (Mapa / Street View) */
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            background-color: #0d9488; /* bg-teal-600 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
     </style>
 </head>
-<body class="text-gray-800 bg-white">
+<body class="bg-white">
 
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3">
@@ -135,7 +145,7 @@
                 
                 <div class="hidden md:flex space-x-6 items-center">
                     <a href="#comodidades" class="text-gray-600 hover:text-teal-500">Comodidades</a>
-                    <a href="#gallery" class="text-gray-600 hover:text-teal-500">Fotos</a>
+                    <a href="#explore" class="text-gray-600 hover:text-teal-500">Local e Fotos</a>
                     <a href="#attractions" class="text-gray-600 hover:text-teal-500">Atrações</a>
                     <a href="#testimonials" class="text-gray-600 hover:text-teal-500">Depoimentos</a>
                     <button id="open-reserve-modal-header" class="cta-button bg-teal-500 text-white font-bold py-2 px-6 rounded-full hover:bg-teal-600">
@@ -154,7 +164,7 @@
 
             <div id="mobile-menu" class="hidden md:hidden mt-4">
                 <a href="#comodidades" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Comodidades</a>
-                <a href="#gallery" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Fotos</a>
+                <a href="#explore" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Local e Fotos</a>
                 <a href="#attractions" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Atrações</a>
                 <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-600 hover:bg-teal-50 rounded">Depoimentos</a>
                 <button id="open-reserve-modal-mobile" class="mt-2 w-full cta-button bg-teal-500 text-white font-bold py-2 px-6 rounded-full hover:bg-teal-600">
@@ -205,7 +215,7 @@
                         <h3 class="text-xl font-bold mb-2">Cozinha Completa</h3>
                         <p class="text-gray-600">Poupe de verdade! Use a nossa cozinha equipada com micro-ondas, fogão, frigorífico e até AirFryer para preparar as suas refeições.</p>
                     </div>
-                     <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 450ms;">
+                    <div class="text-center p-6 bg-gray-50 rounded-lg shadow-hover transition-shadow duration-300 scroll-animate" style="transition-delay: 450ms;">
                         <div class="inline-block p-4 bg-amber-100 text-amber-600 rounded-full mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12H17c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2.5c1.4 0 2.5-1.1 2.5-2.5V12Z"/><path d="M14.5 9.9c.8-1.2 2.1-2 3.5-2H20c1.1 0 2 .9 2 2v.1"/><path d="M4 12c0-4.4 3.6-8 8-8s8 3.1 8 7.1"/><path d="M8 20.1c-2.3-1.2-4-3.5-4-6.1 0-4.4 3.6-8 8-8 .9 0 1.8.2 2.6.5"/><path d="m5 16 1 1 2-2"/></svg>
                         </div>
@@ -231,28 +241,51 @@
         </div>
     </section>
 
-    <section id="gallery">
+    <section id="explore">
         <div class="title-background">
             <div class="container mx-auto px-6 text-center scroll-animate">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">O Nosso Espaço, a sua Casa</h2>
-                <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">Um ambiente limpo, moderno e acolhedor à sua espera.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Explore o Nosso Espaço e a Vizinhança</h2>
+                <p class="mt-2 text-lg text-gray-200 max-w-3xl mx-auto">Veja as fotos do nosso hostel e descubra como é fácil chegar aos principais pontos de São Paulo.</p>
             </div>
         </div>
         <div class="bg-white py-20">
             <div class="container mx-auto px-6">
-                <div class="swiper-container mySwiper swiper-square-frame scroll-animate" style="transition-delay: 200ms;">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="Quarto compartilhado do hostel com beliches" class="rounded-lg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="Área de convivência com sofá e televisão" class="rounded-lg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="Cozinha equipada do hostel" class="rounded-lg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="Banheiro moderno e limpo com chuveiro" class="rounded-lg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="Outra vista do quarto compartilhado" class="rounded-lg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="Mesa de jantar na área comum" class="rounded-lg"></div>
-                        <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="Detalhe da decoração do hostel" class="rounded-lg"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+                    
+                    <div class="scroll-animate">
+                        <div class="flex justify-center mb-6 space-x-2 md:space-x-4">
+                            <button id="map-tab-button" class="tab-button active font-bold py-2 px-6 rounded-full bg-gray-200 text-gray-800">
+                                Mapa 2D
+                            </button>
+                            <button id="street-view-tab-button" class="tab-button font-bold py-2 px-6 rounded-full bg-gray-200 text-gray-800">
+                                Street View 3D
+                            </button>
+                        </div>
+
+                        <div id="map-pane" class="rounded-lg overflow-hidden shadow-2xl">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.166885369658!2d-46.6341499237691!3d-23.598212162391074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a32535698b5%3A0x21e78508672d061c!2sAv.%20Bosque%20da%20Sa%C3%BAde%2C%20236%20-%20Sa%C3%BAde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004144-070!5e0!3m2!1spt-BR!2sbr!4v1720056956799!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div id="street-view-pane" class="hidden rounded-lg overflow-hidden shadow-2xl">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.1669865181055!2d-46.63414458376912!3d-23.59820841239104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a32535698b5%3A0x21e78508672d061c!2sAv.%20Bosque%20da%20Sa%C3%BAde%2C%20236%20-%20Sa%C3%BAde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004144-070!5e0!3m2!1spt-BR!2sbr!4v1720057002597!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+
+                    <div class="scroll-animate" style="transition-delay: 200ms;">
+                        <div class="swiper-container mySwiper swiper-square-frame">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/1.jpg" alt="Quarto compartilhado do hostel com beliches" class="rounded-lg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/2.jpg" alt="Área de convivência com sofá e televisão" class="rounded-lg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/3.jpg" alt="Cozinha equipada do hostel" class="rounded-lg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/4.jpg" alt="Banheiro moderno e limpo com chuveiro" class="rounded-lg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/5.jpg" alt="Outra vista do quarto compartilhado" class="rounded-lg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/6.jpg" alt="Mesa de jantar na área comum" class="rounded-lg"></div>
+                                <div class="swiper-slide"><img src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/7.jpg" alt="Detalhe da decoração do hostel" class="rounded-lg"></div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -306,13 +339,13 @@
     </section>
 
     <section id="testimonials">
-         <div class="title-background">
+        <div class="title-background">
             <div class="container mx-auto px-6 text-center scroll-animate">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">O que os nossos hóspedes dizem</h2>
                 <p class="mt-2 text-lg text-gray-200 max-w-2xl mx-auto">A experiência de quem já viveu o SP Hostel.</p>
             </div>
         </div>
-         <div class="bg-white py-20">
+        <div class="bg-white py-20">
             <div class="container mx-auto px-6">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="bg-white p-8 rounded-lg shadow-md scroll-animate">
@@ -341,12 +374,12 @@
             </button>
         </div>
     </section>
-
+    
     <div id="reservation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 pointer-events-none">
         <div class="modal-content bg-white rounded-lg shadow-xl p-8 max-w-md w-full m-4 transform scale-95">
             <div class="flex justify-between items-center mb-6">
                 <h3 id="modal-title" class="text-2xl font-bold">Calcular e Reservar</h3>
-                <button id="close-modal-button" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+                <button id="close-modal-button" class="text-gray-500 hover:text-gray-800 text-3xl">×</button>
             </div>
             
             <div id="step-1-dates">
@@ -354,30 +387,18 @@
                     <div>
                         <label for="checkin-date" class="block text-sm font-medium text-gray-700">Check-in</label>
                         <div class="relative mt-1">
-                            <input 
-                                type="text" 
-                                id="checkin-date" 
-                                placeholder="DD/MM/AAAA" 
-                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
+                            <input type="text" id="checkin-date" placeholder="DD/MM/AAAA" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
                             <button type="button" id="checkin-calendar-button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-teal-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
                     </div>
                     <div>
                         <label for="checkout-date" class="block text-sm font-medium text-gray-700">Check-out</label>
                         <div class="relative mt-1">
-                            <input 
-                                type="text" 
-                                id="checkout-date" 
-                                placeholder="DD/MM/AAAA"
-                                class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
+                            <input type="text" id="checkout-date" placeholder="DD/MM/AAAA" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 pr-10">
                              <button type="button" id="checkout-calendar-button" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-teal-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
                     </div>
@@ -404,7 +425,7 @@
                      <button id="book-on-booking-button" class="w-full cta-button bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700">
                         Reservar pelo Booking.com
                     </button>
-                    <button id="book-on-whatsapp-button" class="w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
+                     <button id="book-on-whatsapp-button" class="w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
                         Reservar pelo WhatsApp
                     </button>
                 </div>
@@ -413,37 +434,37 @@
             <div id="step-3-form" class="hidden">
                  <p class="text-center text-gray-600 mb-4">Ótimo! Agora preencha os seus dados para solicitar a reserva via WhatsApp.</p>
                  <form id="booking-form">
-                     <div class="space-y-4">
-                         <div>
-                             <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-                             <input type="text" id="full-name" name="Nome Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                         </div>
-                         <div>
+                    <div class="space-y-4">
+                        <div>
+                               <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
+                               <input type="text" id="full-name" name="Nome Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                          </div>
+                        <div>
                             <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
                             <input type="text" id="cpf" name="CPF" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                        </div>
-                         <div>
-                             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                             <input type="email" id="email" name="Email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
                          </div>
-                         <div>
-                             <label for="phone" class="block text-sm font-medium text-gray-700">Telemóvel (Whatsapp)</label>
-                             <input type="tel" id="phone" name="Telemóvel" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                         </div>
+                        <div>
+                               <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                               <input type="email" id="email" name="Email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                          </div>
+                        <div>
+                               <label for="phone" class="block text-sm font-medium text-gray-700">Telemóvel (Whatsapp)</label>
+                               <input type="tel" id="phone" name="Telemóvel" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                          </div>
                      </div>
                      <button type="submit" id="send-booking-request" class="mt-8 w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
-                         Enviar Pedido via WhatsApp
+                          Enviar Pedido via WhatsApp
                      </button>
                  </form>
             </div>
 
-              <div id="step-4-confirmation" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
-                </div>
+            <div id="step-4-confirmation" class="hidden mt-4 p-4 text-center bg-green-100 text-green-800 rounded-lg">
+            </div>
         </div>
     </div>
 
     <footer id="contact" class="bg-gray-800 text-white">
-       <div class="container mx-auto px-6 py-12">
+        <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <h3 class="text-xl font-bold mb-4">SP Hostel</h3>
@@ -465,14 +486,14 @@
                 </div>
             </div>
             <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500">
-                <p>&copy; 2024 SP Hostel. Todos os direitos reservados.</p>
+                <p>© 2024 SP Hostel. Todos os direitos reservados.</p>
             </div>
-        </div>
+       </div>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // --- Initialize Swiper Carousel ---
+        // --- Inicialização do Carrossel de Fotos (Swiper) ---
         const swiper = new Swiper('.mySwiper', {
             loop: true,
             spaceBetween: 20,
@@ -490,7 +511,7 @@
             },
         });
 
-        // --- Scroll Animations ---
+        // --- Animações de Scroll ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -503,7 +524,7 @@
             observer.observe(el);
         });
 
-        // --- Mobile Menu Toggle ---
+        // --- Controle do Menu Mobile ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -511,13 +532,38 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // --- Modal Control and State ---
+        // --- LÓGICA DAS ABAS DO MAPA / STREET VIEW ---
+        const mapTabButton = document.getElementById('map-tab-button');
+        const streetViewTabButton = document.getElementById('street-view-tab-button');
+        const mapPane = document.getElementById('map-pane');
+        const streetViewPane = document.getElementById('street-view-pane');
+
+        mapTabButton.addEventListener('click', () => {
+            // Mostra o mapa, esconde o street view
+            mapPane.classList.remove('hidden');
+            streetViewPane.classList.add('hidden');
+            // Atualiza estilo dos botões
+            mapTabButton.classList.add('active');
+            streetViewTabButton.classList.remove('active');
+        });
+
+        streetViewTabButton.addEventListener('click', () => {
+            // Mostra o street view, esconde o mapa
+            streetViewPane.classList.remove('hidden');
+            mapPane.classList.add('hidden');
+            // Atualiza estilo dos botões
+            streetViewTabButton.classList.add('active');
+            mapTabButton.classList.remove('active');
+        });
+
+
+        // --- Controle e Estado do Modal de Reserva ---
         const modal = document.getElementById('reservation-modal');
         const modalTitle = document.getElementById('modal-title');
         const openModalButtons = document.querySelectorAll('[id^="open-reserve-modal-"]');
         const closeModalButton = document.getElementById('close-modal-button');
         
-        // Modal Steps
+        // Etapas do Modal
         const step1Dates = document.getElementById('step-1-dates');
         const step2Method = document.getElementById('step-2-method');
         const step3Form = document.getElementById('step-3-form');
@@ -543,7 +589,7 @@
             if (event.target === modal) hideModal();
         });
 
-        // --- Calculation Logic ---
+        // --- Lógica de Cálculo de Preço e Inicialização do Calendário (Flatpickr) ---
         const checkinInput = document.getElementById('checkin-date');
         const checkoutInput = document.getElementById('checkout-date');
         const calculationResultDiv = document.getElementById('calculation-result');
@@ -551,26 +597,24 @@
         const totalPriceSpan = document.getElementById('total-price');
         const dateErrorP = document.getElementById('date-error');
 
+        let checkinPicker, checkoutPicker;
+
         function calculatePrice() {
             dateErrorP.textContent = '';
             
-            const checkinDateStr = checkinInput._flatpickr.selectedDates[0];
-            const checkoutDateStr = checkoutInput._flatpickr.selectedDates[0];
+            const checkinDate = checkinPicker.selectedDates[0];
+            const checkoutDate = checkoutPicker.selectedDates[0];
 
-            if (!checkinDateStr || !checkoutDateStr) {
+            if (!checkinDate || !checkoutDate) {
                 calculationResultDiv.classList.add('hidden');
+                totalNightsSpan.textContent = '0';
+                totalPriceSpan.textContent = `R$ 0,00`;
                 return;
             }
-
-            const checkinDate = new Date(checkinDateStr);
-            const checkoutDate = new Date(checkoutDateStr);
             
             if (checkoutDate <= checkinDate) {
-                calculationResultDiv.classList.add('hidden');
-                if (checkoutDateStr) {
-                    dateErrorP.textContent = 'A data de check-out deve ser posterior à de check-in.';
-                    calculationResultDiv.classList.remove('hidden');
-                }
+                calculationResultDiv.classList.remove('hidden'); // Corrigido de .remove para .classList.remove
+                dateErrorP.textContent = 'A data de check-out deve ser posterior à de check-in.';
                 totalNightsSpan.textContent = '0';
                 totalPriceSpan.textContent = `R$ 0,00`;
                 return;
@@ -585,8 +629,9 @@
             while (currentDate < checkoutDate) {
                 totalNights++;
                 const dayOfWeek = currentDate.getUTCDay();
-                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) totalPrice += 43;
-                else totalPrice += 35;
+                // 0=Domingo, 5=Sexta, 6=Sábado
+                if (dayOfWeek === 5 || dayOfWeek === 6 || dayOfWeek === 0) totalPrice += 43; // Preço Fim de Semana
+                else totalPrice += 35; // Preço Dia de Semana
                 currentDate.setUTCDate(currentDate.getUTCDate() + 1);
             }
 
@@ -594,20 +639,19 @@
             totalPriceSpan.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
         }
 
-        // --- Flatpickr Initialization ---
-        const checkoutPicker = flatpickr(checkoutInput, {
+        checkoutPicker = flatpickr(checkoutInput, {
             altInput: true,
             altFormat: "d/m/Y",
             dateFormat: "Y-m-d",
             locale: 'pt',
             placeholder: "DD/MM/AAAA",
-            onChange: function(selectedDates, dateStr, instance) {
+            onChange: function() {
                 calculatePrice();
             },
             clickOpens: false 
         });
 
-        const checkinPicker = flatpickr(checkinInput, {
+        checkinPicker = flatpickr(checkinInput, {
             altInput: true,
             altFormat: "d/m/Y",
             dateFormat: "Y-m-d",
@@ -619,6 +663,9 @@
                     let minCheckoutDate = new Date(selectedDates[0]);
                     minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
                     checkoutPicker.set('minDate', minCheckoutDate);
+                } else {
+                    checkoutPicker.clear();
+                    checkoutPicker.set('minDate', null); 
                 }
                 calculatePrice();
             },
@@ -632,7 +679,7 @@
             checkoutPicker.open();
         });
 
-        // --- Form Navigation and Submission ---
+        // --- Navegação do Formulário e Envio ---
         const confirmDatesButton = document.getElementById('confirm-dates-button');
         const bookOnBookingButton = document.getElementById('book-on-booking-button');
         const bookOnWhatsappButton = document.getElementById('book-on-whatsapp-button');
@@ -641,9 +688,11 @@
         function resetForm() {
             bookingForm.reset();
             
-            checkinPicker.clear();
-            checkoutPicker.clear();
-            checkoutPicker.set('minDate', null);
+            if (checkinPicker) checkinPicker.clear();
+            if (checkoutPicker) {
+                checkoutPicker.clear();
+                checkoutPicker.set('minDate', null);
+            }
             
             calculationResultDiv.classList.add('hidden');
             dateErrorP.textContent = '';
@@ -658,7 +707,9 @@
         confirmDatesButton.addEventListener('click', () => {
             if (totalNightsSpan.textContent === '0' || dateErrorP.textContent !== '') {
                 dateErrorP.textContent = 'Por favor, selecione datas válidas para continuar.';
-                calculationResultDiv.classList.remove('hidden');
+                if(totalNightsSpan.textContent === '0') {
+                     calculationResultDiv.classList.add('hidden');
+                }
                 return;
             }
             modalTitle.textContent = "Escolha como Reservar";
@@ -680,8 +731,8 @@
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const checkin = new Date(checkinInput._flatpickr.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
-            const checkout = new Date(checkoutInput._flatpickr.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+            const checkin = new Date(checkinPicker.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+            const checkout = new Date(checkoutPicker.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
             const totalNights = totalNightsSpan.textContent;
             const totalPrice = totalPriceSpan.textContent;
             const fullName = document.getElementById('full-name').value;
