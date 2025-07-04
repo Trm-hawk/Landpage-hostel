@@ -30,7 +30,6 @@
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        /* Estilo para seções com imagem de fundo e sobreposição escura */
         .image-background-section {
             position: relative;
             background-position: center center;
@@ -48,7 +47,6 @@
             position: relative;
             z-index: 2;
         }
-        /* Efeitos de animação para os botões */
         .cta-button {
             transition: all 0.3s ease;
         }
@@ -56,7 +54,6 @@
             transform: translateY(-3px) scale(1.05);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
         }
-        /* Estilos para a janela Modal (pop-up de reserva) */
         .modal {
             transition: opacity 0.25s ease;
         }
@@ -64,7 +61,6 @@
             transition: transform 0.25s ease;
         }
         
-        /* Animação de entrada dos elementos ao rolar a página */
         .scroll-animate {
             opacity: 0;
             transform: translateY(40px);
@@ -74,8 +70,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Customização do Carrossel de Fotos (Swiper) */
         .swiper-button-next, .swiper-button-prev {
             color: #ffffff;
             background-color: rgba(0, 0, 0, 0.5);
@@ -94,13 +88,11 @@
         .swiper-pagination-bullet-active {
             background-color: #f59e0b !important;
         }
-
-        /* Estilo para o carrossel e mapa/street view quadrados 600x600 */
         .square-frame {
             width: 100%;
-            max-width: 600px; /* Largura máxima */
+            max-width: 600px;
             height: auto;
-            aspect-ratio: 1 / 1; /* Proporção de 1:1 (quadrado) */
+            aspect-ratio: 1 / 1;
             margin-left: auto;
             margin-right: auto;
             overflow: hidden;
@@ -109,21 +101,17 @@
         .square-frame .swiper-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
-            cursor: pointer; /* Indica que a imagem é clicável */
+            object-fit: cover;
+            cursor: pointer;
         }
-
-        /* Estilos para os botões de aba (Mapa / Street View) */
         .tab-button {
             transition: all 0.3s ease;
         }
         .tab-button.active {
-            background-color: #0d9488; /* bg-teal-600 */
+            background-color: #0d9488;
             color: white;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
-
-        /* Estilos para o Lightbox (Zoom da Imagem) */
         .lightbox {
             position: fixed;
             top: 0;
@@ -131,7 +119,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.85);
-            display: none; /* Inicia escondido */
+            display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -157,8 +145,6 @@
         .lightbox-close:hover {
             transform: scale(1.1);
         }
-        
-        /* Estilos para o Botão Flutuante e Pop-up do WhatsApp */
         .whatsapp-fab {
             position: fixed;
             bottom: 2rem;
@@ -167,7 +153,7 @@
         }
         .whatsapp-popup {
             position: fixed;
-            bottom: 6.5rem; /* Posição acima do FAB */
+            bottom: 6.5rem;
             right: 2rem;
             z-index: 900;
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -313,10 +299,10 @@
             </div>
             <div id="map-street-view-container" class="relative w-full square-frame rounded-lg overflow-hidden shadow-2xl scroll-animate">
                 <div id="street-view-pane" class="w-full h-full">
-                    <iframe src="https://www.google.com/maps/embed?pb=!4v1751508797436!6m8!1m7!1sGn4TfDP1QRiysaQ-ftZ3KA!2m2!1d-23.61144678190259!2d-46.63586025813155!3f187.03206!4f0!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!4v1658849490141!6m8!1m7!1sCAoSLEFGMVFpcE5qLVVsdXlHUlNsdHl1SWctallSLWwzV3ZkZl95SkVVaHhTQjA0!2m2!1d-23.6033182!2d-46.6348877!3f246.75!4f-8.68!5f0.7820865974627469" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div id="map-pane" class="w-full h-full hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.798705964875!2d-46.63844232571141!3d-23.61155106343596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a4c16af7b55%3A0xb8523d266bd78143!2sAv.%20Bosque%20da%20Sa%C3%BAde%2C%20236%20-%20Vila%20da%20Sa%C3%BAde%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004142-080!5e0!3m2!1spt-BR!2sbr!4v1751510828900!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.402511419782!2d-46.637452385419!3d-23.60331818466696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a371295416b%3A0x675b4f6b3b5c777e!2sSP%20Hostel!5e0!3m2!1spt-BR!2sbr!4v1658849379899!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -373,16 +359,65 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-gray-50 p-8 rounded-lg shadow-md scroll-animate">
-                    <p class="text-gray-600 mb-4">"A localização é perfeita! Fica ao lado do metro, o que salvou a minha viagem. Consegui ir para todos os lugares que queria sem gastar quase nada com transporte."</p>
-                    <div class="font-bold text-teal-600">- Joana F., Rio de Janeiro</div>
+                    <div class="flex items-center mb-4">
+                        <img class="w-14 h-14 rounded-full mr-4 object-cover" src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/perfil-1.png" alt="Foto da hóspede Joana F.">
+                        <div>
+                            <div class="font-bold text-gray-800">Joana F.</div>
+                            <div class="text-sm text-gray-600">Rio de Janeiro</div>
+                            <div class="flex items-center text-yellow-400 mt-1">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mt-2">"A localização é perfeita! Fica ao lado do metro, o que salvou a minha viagem. Consegui ir para todos os lugares que queria sem gastar quase nada com transporte."</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 200ms;">
-                    <p class="text-gray-600 mb-4">"Hostel limpo, seguro e com um preço que não encontrei em nenhum outro lugar com esta qualidade. A cozinha com airfryer é uma mão na roda. Recomendo demais!"</p>
-                    <div class="font-bold text-teal-600">- Carlos M., Belo Horizonte</div>
+                    <div class="flex items-center mb-4">
+                        <img class="w-14 h-14 rounded-full mr-4 object-cover" src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/perfil-2.png" alt="Foto do hóspede Carlos M.">
+                        <div>
+                            <div class="font-bold text-gray-800">Carlos M.</div>
+                            <div class="text-sm text-gray-600">Belo Horizonte</div>
+                            <div class="flex items-center mt-1">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <div class="relative">
+                                    <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <div class="absolute top-0 left-0 h-full overflow-hidden" style="width: 50%;">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mt-2">"Hostel limpo, seguro e com um preço que não encontrei em nenhum outro lugar com esta qualidade. A cozinha com airfryer é uma mão na roda. Recomendo demais!"</p>
                 </div>
                 <div class="bg-gray-50 p-8 rounded-lg shadow-md scroll-animate" style="transition-delay: 400ms;">
-                    <p class="text-gray-600 mb-4">"O melhor custo-benefício de São Paulo. Você está perto de tudo, num bairro tranquilo e paga um valor justo. A máquina de lavar e secar foi um bónus incrível!"</p>
-                    <div class="font-bold text-teal-600">- Maria S., Salvador</div>
+                    <div class="flex items-center mb-4">
+                        <img class="w-14 h-14 rounded-full mr-4 object-cover" src="https://raw.githubusercontent.com/Trm-hawk/imagens/main/perfil-3.png" alt="Foto da hóspede Maria S.">
+                        <div>
+                            <div class="font-bold text-gray-800">Maria S.</div>
+                            <div class="text-sm text-gray-600">Salvador</div>
+                            <div class="flex items-center mt-1">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                <div class="relative">
+                                    <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    <div class="absolute top-0 left-0 h-full overflow-hidden" style="width: 80%;">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mt-2">"O melhor custo-benefício de São Paulo. Você está perto de tudo, num bairro tranquilo e paga um valor justo. A máquina de lavar e secar foi um bónus incrível!"</p>
                 </div>
             </div>
         </div>
@@ -458,25 +493,25 @@
                  <p class="text-center text-gray-600 mb-4">Ótimo! Agora preencha os seus dados para solicitar a reserva via WhatsApp.</p>
                  <form id="booking-form">
                      <div class="space-y-4">
-                          <div>
-                               <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-                               <input type="text" id="full-name" name="Nome Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                          </div>
-                          <div>
+                           <div>
+                                <label for="full-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
+                                <input type="text" id="full-name" name="Nome Completo" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                           </div>
+                           <div>
                             <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
                             <input type="text" id="cpf" name="CPF" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                         </div>
-                          <div>
-                               <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                               <input type="email" id="email" name="Email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                          </div>
-                          <div>
-                               <label for="phone" class="block text-sm font-medium text-gray-700">Telemóvel (Whatsapp)</label>
-                               <input type="tel" id="phone" name="Telemóvel" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
-                          </div>
+                           </div>
+                           <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="Email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                           </div>
+                           <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700">Telemóvel (Whatsapp)</label>
+                                <input type="tel" id="phone" name="Telemóvel" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500">
+                           </div>
                      </div>
                      <button type="submit" id="send-booking-request" class="mt-8 w-full cta-button bg-green-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600">
-                          Enviar Pedido via WhatsApp
+                           Enviar Pedido via WhatsApp
                      </button>
                  </form>
             </div>
@@ -491,7 +526,7 @@
         <img id="lightbox-image" src="" alt="Imagem ampliada">
     </div>
 
-    <a href="https://wa.me/5511940696636?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20ou%20tirar%20uma%20dúvida." target="_blank" class="whatsapp-fab cta-button bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center">
+    <a href="https://wa.me/5511981687476?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20ou%20tirar%20uma%20dúvida." target="_blank" class="whatsapp-fab cta-button bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.001.004l-1.03 3.752l3.847-1.017z"/></svg>
     </a>
 
@@ -500,7 +535,7 @@
             <p class="text-gray-700 font-medium">Olá! Posso ajudar?</p>
             <button id="close-popup-button" class="text-gray-400 hover:text-gray-600">×</button>
         </div>
-        <a href="https://wa.me/5511940696636?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20ou%20tirar%20uma%20dúvida." target="_blank" class="mt-3 block w-full text-center bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+        <a href="https://wa.me/5511981687476?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva%20ou%20tirar%20uma%20dúvida." target="_blank" class="mt-3 block w-full text-center bg-green-500 text-white font-bold py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
             Conversar no WhatsApp
         </a>
     </div>
@@ -516,7 +551,7 @@
                     <h3 class="text-xl font-bold mb-4">Contacto</h3>
                     <p class="text-gray-400">Av. Bosque da Saúde, 236</p>
                     <p class="text-gray-400">Saúde, São Paulo - SP</p>
-                    <p class="text-gray-400 mt-2"><strong>Whatsapp:</strong> +55 11 94069-6636</p>
+                    <p class="text-gray-400 mt-2"><strong>Whatsapp:</strong> +55 11 98168-7476</p>
                     <p class="text-gray-400"><strong>Email:</strong> luanmax.contato11@gmail.com</p>
                 </div>
                 <div>
@@ -534,7 +569,9 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500">
+            <div class="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
+                <p class="mb-2">Desenvolvimento da pagina por lm-producoes, cnpj: 50.697.942/0001-49, especialistas em desenvolvimento de tecnologias e engenharia de softwares.</p>
+                <p class="mb-4 font-semibold text-gray-400">"Você Sonha. Nós Realizamos." - Max Luan Coelho, Fundador & CEO</p>
                 <p>© 2024 SP Hostel. Todos os direitos reservados.</p>
             </div>
        </div>
@@ -542,7 +579,6 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // --- Inicialização do Carrossel de Fotos (Swiper) ---
         const swiper = new Swiper('.mySwiper', {
             loop: true,
             spaceBetween: 20,
@@ -559,8 +595,6 @@
                 prevEl: '.swiper-button-prev',
             },
         });
-
-        // --- Animações de Scroll ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -568,67 +602,51 @@
                 }
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.scroll-animate').forEach(el => {
             observer.observe(el);
         });
-
-        // --- Controle do Menu Mobile ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-
-        // --- LÓGICA DAS ABAS DO MAPA / STREET VIEW ---
         const mapTabButton = document.getElementById('map-tab-button');
         const streetViewTabButton = document.getElementById('street-view-tab-button');
         const mapPane = document.getElementById('map-pane');
         const streetViewPane = document.getElementById('street-view-pane');
-
         mapTabButton.addEventListener('click', () => {
             mapPane.classList.remove('hidden');
             streetViewPane.classList.add('hidden');
             mapTabButton.classList.add('active');
             streetViewTabButton.classList.remove('active');
         });
-
         streetViewTabButton.addEventListener('click', () => {
             streetViewPane.classList.remove('hidden');
             mapPane.classList.add('hidden');
             streetViewTabButton.classList.add('active');
             mapTabButton.classList.remove('active');
         });
-
-        // --- LÓGICA DO LIGHTBOX (ZOOM DA IMAGEM) ---
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         const lightboxClose = document.getElementById('lightbox-close');
         const carouselImages = document.querySelectorAll('.swiper-slide img');
-
         carouselImages.forEach(image => {
             image.addEventListener('click', () => {
                 lightboxImage.src = image.src;
                 lightbox.style.display = 'flex';
             });
         });
-
         const closeLightbox = () => {
             lightbox.style.display = 'none';
         }
-
         lightboxClose.addEventListener('click', closeLightbox);
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 closeLightbox();
             }
         });
-
-        // --- LÓGICA DO POP-UP DO WHATSAPP ---
         const whatsappPopup = document.getElementById('whatsapp-popup');
         const closePopupButton = document.getElementById('close-popup-button');
-
         const showWhatsAppPopup = () => {
             if (!sessionStorage.getItem('whatsappPopupShown')) {
                 whatsappPopup.classList.remove('hidden');
@@ -638,34 +656,26 @@
                 sessionStorage.setItem('whatsappPopupShown', 'true');
             }
         };
-
         const hideWhatsAppPopup = () => {
             whatsappPopup.classList.add('opacity-0', 'translate-y-4');
             setTimeout(() => {
                 whatsappPopup.classList.add('hidden');
             }, 300);
         };
-
-        setTimeout(showWhatsAppPopup, 5000); // Mostra o pop-up após 5 segundos
+        setTimeout(showWhatsAppPopup, 5000);
         closePopupButton.addEventListener('click', hideWhatsAppPopup);
-
-
-        // --- Controle e Estado do Modal de Reserva ---
         const modal = document.getElementById('reservation-modal');
         const modalTitle = document.getElementById('modal-title');
         const openModalButtons = document.querySelectorAll('[id^="open-reserve-modal-"]');
         const closeModalButton = document.getElementById('close-modal-button');
-        
         const step1Dates = document.getElementById('step-1-dates');
         const step2Method = document.getElementById('step-2-method');
         const step3Form = document.getElementById('step-3-form');
         const step4Confirmation = document.getElementById('step-4-confirmation');
-
         const showModal = () => {
             modal.classList.remove('opacity-0', 'pointer-events-none');
             modal.querySelector('.modal-content').classList.remove('scale-95');
         };
-
         const hideModal = () => {
             modal.classList.add('opacity-0');
             modal.querySelector('.modal-content').classList.add('scale-95');
@@ -674,37 +684,29 @@
                 resetForm();
             }, 250);
         };
-        
         openModalButtons.forEach(button => button.addEventListener('click', showModal));
         closeModalButton.addEventListener('click', hideModal);
         modal.addEventListener('click', (event) => {
             if (event.target === modal) hideModal();
         });
-
-        // --- Lógica de Cálculo de Preço e Inicialização do Calendário (Flatpickr) ---
         const checkinInput = document.getElementById('checkin-date');
         const checkoutInput = document.getElementById('checkout-date');
         const calculationResultDiv = document.getElementById('calculation-result');
         const totalNightsSpan = document.getElementById('total-nights');
         const totalPriceSpan = document.getElementById('total-price');
         const dateErrorP = document.getElementById('date-error');
-
         let checkinPicker, checkoutPicker;
-
         function calculatePrice() {
             if (!checkinPicker || !checkoutPicker) return;
             dateErrorP.textContent = '';
-            
             const checkinDate = checkinPicker.selectedDates[0];
             const checkoutDate = checkoutPicker.selectedDates[0];
-
             if (!checkinDate || !checkoutDate) {
                 calculationResultDiv.classList.add('hidden');
                 totalNightsSpan.textContent = '0';
                 totalPriceSpan.textContent = `R$ 0,00`;
                 return;
             }
-            
             if (checkoutDate <= checkinDate) {
                 calculationResultDiv.classList.remove('hidden');
                 dateErrorP.textContent = 'A data de check-out deve ser posterior à de check-in.';
@@ -712,13 +714,10 @@
                 totalPriceSpan.textContent = `R$ 0,00`;
                 return;
             }
-
             calculationResultDiv.classList.remove('hidden');
-
             let totalPrice = 0;
             let totalNights = 0;
             let currentDate = new Date(checkinDate);
-
             while (currentDate < checkoutDate) {
                 totalNights++;
                 const dayOfWeek = currentDate.getUTCDay();
@@ -729,11 +728,9 @@
                 }
                 currentDate.setUTCDate(currentDate.getUTCDate() + 1);
             }
-
             totalNightsSpan.textContent = totalNights;
             totalPriceSpan.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
         }
-
         checkoutPicker = flatpickr(checkoutInput, {
             altInput: true,
             altFormat: "d/m/Y",
@@ -743,7 +740,6 @@
             onChange: calculatePrice,
             clickOpens: false 
         });
-        
         checkinPicker = flatpickr(checkinInput, {
             altInput: true,
             altFormat: "d/m/Y",
@@ -764,16 +760,12 @@
             },
             clickOpens: false
         });
-
         document.getElementById('checkin-calendar-button').addEventListener('click', () => checkinPicker.open());
         document.getElementById('checkout-calendar-button').addEventListener('click', () => checkoutPicker.open());
-
-        // --- Navegação do Formulário e Envio ---
         const confirmDatesButton = document.getElementById('confirm-dates-button');
         const bookOnBookingButton = document.getElementById('book-on-booking-button');
         const bookOnWhatsappButton = document.getElementById('book-on-whatsapp-button');
         const bookingForm = document.getElementById('booking-form');
-
         function resetForm() {
             bookingForm.reset();
             if (checkinPicker) checkinPicker.clear();
@@ -789,7 +781,6 @@
             step3Form.classList.add('hidden');
             step4Confirmation.classList.add('hidden');
         }
-
         confirmDatesButton.addEventListener('click', () => {
             if (totalNightsSpan.textContent === '0' || dateErrorP.textContent !== '') {
                 dateErrorP.textContent = 'Por favor, selecione datas válidas para continuar.';
@@ -802,21 +793,17 @@
             step1Dates.classList.add('hidden');
             step2Method.classList.remove('hidden');
         });
-
         bookOnBookingButton.addEventListener('click', () => {
             window.open('https://www.booking.com/Share-sdFD2P', '_blank');
             hideModal();
         });
-
         bookOnWhatsappButton.addEventListener('click', () => {
             modalTitle.textContent = "Dados para Reserva";
             step2Method.classList.add('hidden');
             step3Form.classList.remove('hidden');
         });
-
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
             const checkin = new Date(checkinPicker.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
             const checkout = new Date(checkoutPicker.selectedDates[0]).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
             const totalNights = totalNightsSpan.textContent;
@@ -825,11 +812,8 @@
             const cpf = document.getElementById('cpf').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-
             const message = `Olá! Gostaria de solicitar uma reserva no SP Hostel.\n\n*Detalhes da Reserva:*\n---------------------\n*Check-in:* ${checkin}\n*Check-out:* ${checkout}\n*Total de Noites:* ${totalNights}\n*Valor Total:* ${totalPrice}\n\n*Os meus Dados:*\n-----------------\n*Nome:* ${fullName}\n*CPF:* ${cpf}\n*Email:* ${email}\n*Telemóvel:* ${phone}\n\nAguardo a confirmação. Obrigado!`;
-            
-            const whatsappUrl = `https://wa.me/5511940696636?text=${encodeURIComponent(message)}`;
-
+            const whatsappUrl = `https://wa.me/5511981687476?text=${encodeURIComponent(message)}`;
             step3Form.classList.add('hidden');
             step4Confirmation.innerHTML = `
                 <p class="font-semibold text-xl text-green-600">Quase lá!</p>
